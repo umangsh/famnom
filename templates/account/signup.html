@@ -1,0 +1,40 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-mx-auto">
+    <p>{% blocktranslate with sign_in=TEXT_ACCOUNT_LOGIN|lower %}Already have an account? Then please <a href="{{ login_url }}">{{ sign_in }}</a>.{% endblocktranslate %}</p>
+  </div>
+</div>
+
+<div class="row">
+  <form class="form-signin text-center" method="post">
+    {% csrf_token %}
+    <img class="mb-4" src="{% static 'nutrition_tracker/img/icon.png' %}" alt="" width="72" height="72">
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+      {{ form.non_field_errors|striptags }}
+    </div>
+    {% endif %}
+
+    {% for field in form %}
+      {% if field.errors %}
+      <div class="alert alert-danger" role="alert">
+        {{ field.errors|striptags }}
+      </div>
+      {% endif %}
+    {% endfor %}
+
+    {% for field in form %}
+      <label for="{{ field.auto_id }}" class="sr-only">{{ field.label }}</label>
+      {{ field }}
+    {% endfor %}
+    <button class="btn btn-lg btn-primary btn-block" type="submit">{{ TEXT_ACCOUNT_SIGNUP }}</button>
+  </form>
+</div>
+{% endblock %}

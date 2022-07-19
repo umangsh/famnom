@@ -1,0 +1,506 @@
+"""Constants module."""
+from __future__ import annotations
+
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+
+class MealType(models.TextChoices):
+    """Meal Type"""
+
+    SUHUR = "Suhur", _("Suhur")
+    BREAKFAST = "Breakfast", _("Breakfast")
+    SECOND_BREAKFAST = "Second Breakfast", _("Second Breakfast")
+    ELEVENSES = "Elevenses", _("Elevenses")
+    BRUNCH = "Brunch", _("Brunch")
+    LUNCH = "Lunch", _("Lunch")
+    SNACK = "Snack", _("Snack")
+    AFTERNOON_TEA = "Afternoon Tea", _("Afternoon Tea")
+    TIFFIN = "Tiffin", _("Tiffin")
+    DINNER = "Dinner", _("Dinner")
+    SUPPER = "Supper", _("Supper")
+    IFTAR = "Iftar", _("Iftar")
+    SIU_YEH = "Siu Yeh", _("Siu Yeh")
+
+    __empty__ = _("Select meal")
+
+
+class ServingSizeUnit(models.TextChoices):
+    """Serving Size Unit"""
+
+    WEIGHT = "g", "g"
+    VOLUME = "ml", "ml"
+
+    __empty__ = _("Select unit")
+
+
+class Dimension(models.IntegerChoices):
+    """Dimension"""
+
+    QUANTITY = 1, _("Apply preference for quantity.")
+    COUNT = 2, _("Apply preference on count.")
+
+
+class ExpansionSet(models.IntegerChoices):
+    """ExpansionSet"""
+
+    SELF = 1, _("Apply preference to self.")
+    MEMBERS = 2, _("Apply preference to members, only applicable to categories.")
+
+
+class Threshold(models.TextChoices):
+    """Threshold"""
+
+    MAX_VALUE = "1", "<="
+    EXACT_VALUE = "2", "="
+    MIN_VALUE = "3", ">="
+
+    __empty__ = ""
+
+
+USDA_FOUNDATION_FOOD = "foundation_food"
+USDA_SR_LEGACY_FOOD = "sr_legacy_food"
+USDA_SURVEY_FNDDS_FOOD = "survey_fndds_food"
+USDA_BRANDED_FOOD = "branded_food"
+USDA_DATA_TYPES = [
+    USDA_FOUNDATION_FOOD,
+    USDA_SR_LEGACY_FOOD,
+    USDA_SURVEY_FNDDS_FOOD,
+    USDA_BRANDED_FOOD,
+]
+
+
+class DBFoodSourceType(models.IntegerChoices):
+    """DBFood Source"""
+
+    UNKNOWN = 0, _("Unknown")
+    USDA = 1, _("USDA")
+    USER = 2, _("User Generated Foods")
+
+
+class DBFoodSourceSubType(models.IntegerChoices):
+    """DBFood Source Sub type"""
+
+    UNKNOWN = 0, _("Unknown")
+    USDA_FOUNDATION_FOOD = 1, _("USDA Foundation Food")
+    USDA_SR_LEGACY_FOOD = 2, _("USDA SR Legacy Food")
+    USDA_SURVEY_FNDDS_FOOD = 3, _("USDA Survey FNDDS Food")
+    USDA_BRANDED_FOOD = 4, _("USDA Branded Food")
+    OTHER = 9999, _("Other")
+
+
+DB_SUB_TYPE_TO_USDA_TYPE_MAP = {
+    DBFoodSourceSubType.USDA_FOUNDATION_FOOD: USDA_FOUNDATION_FOOD,
+    DBFoodSourceSubType.USDA_SR_LEGACY_FOOD: USDA_SR_LEGACY_FOOD,
+    DBFoodSourceSubType.USDA_SURVEY_FNDDS_FOOD: USDA_SURVEY_FNDDS_FOOD,
+    DBFoodSourceSubType.USDA_BRANDED_FOOD: USDA_BRANDED_FOOD,
+}
+
+USDA_TYPE_TO_DB_SUB_TYPE_MAP = {
+    USDA_FOUNDATION_FOOD: DBFoodSourceSubType.USDA_FOUNDATION_FOOD,
+    USDA_SR_LEGACY_FOOD: DBFoodSourceSubType.USDA_SR_LEGACY_FOOD,
+    USDA_SURVEY_FNDDS_FOOD: DBFoodSourceSubType.USDA_SURVEY_FNDDS_FOOD,
+    USDA_BRANDED_FOOD: DBFoodSourceSubType.USDA_BRANDED_FOOD,
+}
+
+BRAND_FIELDS = ["brand_name", "subbrand_name", "brand_owner", "gtin_upc"]
+
+SCALING_FACTOR = 1000  # CP-SAT is an integer solver. Multiply everything by 1000 when solving.
+PORTION_SIZE = 100  # Portion normalization factor
+WRITE_BATCH_SIZE = 100
+SITE_NAME = "Famnom"
+SITE_URL = "www.famnom.com"
+SITE_TAGLINE = "The Family Nutrition Planner"
+SITE_CONTACT_EMAIL = "personal@umangsh.com"
+
+DEFAULT_DAILY_FOOD_MIN_VALUE = 10
+DEFAULT_DAILY_FOOD_MAX_VALUE = 100
+INT_MIN_VALUE = 0
+INT_MAX_VALUE = 5000
+RW_FLOAT_PRECISION = 3
+FLOATFORMAT_PRECISION = "-1g"
+
+CATEGORY_ALL_FOODS = 0
+
+PROTEIN_NUTRIENT_ID = 1003
+FAT_NUTRIENT_ID = 1004
+CARBOHYDRATE_NUTRIENT_ID = 1005
+ENERGY_NUTRIENT_ID = 1008
+STARCH_NUTRIENT_ID = 1009
+TOTAL_SUGARS_NUTRIENT_ID = 1063
+TOTAL_FIBER_NUTRIENT_ID = 1079
+SOLUBLE_FIBER_NUTRIENT_ID = 1082
+INSOLUBLE_FIBER_NUTRIENT_ID = 1084
+SUGAR_ALCOHOL_NUTRIENT_ID = 1086
+CALCIUM_NUTRIENT_ID = 1087
+CHLORINE_NUTRIENT_ID = 1088
+IRON_NUTRIENT_ID = 1089
+MAGNESIUM_NUTRIENT_ID = 1090
+PHOSPHORUS_NUTRIENT_ID = 1091
+POTASSIUM_NUTRIENT_ID = 1092
+SODIUM_NUTRIENT_ID = 1093
+SULFUR_NUTRIENT_ID = 1094
+ZINC_NUTRIENT_ID = 1095
+CHROMIUM_NUTRIENT_ID = 1096
+COBALT_NUTRIENT_ID = 1097
+COPPER_NUTRIENT_ID = 1098
+FLOURIDE_NUTRIENT_ID = 1099
+IODINE_NUTRIENT_ID = 1100
+MANGANESE_NUTRIENT_ID = 1101
+MOLYBDENUM_NUTRIENT_ID = 1102
+SELENIUM_NUTRIENT_ID = 1103
+VITAMIN_A_NUTRIENT_ID = 1106
+VITAMIN_E_NUTRIENT_ID = 1109
+VITAMIN_D_NUTRIENT_ID_IU = 1110
+VITAMIN_D_NUTRIENT_ID = 1114
+VITAMIN_C_NUTRIENT_ID = 1162
+THIAMIN_NUTRIENT_ID = 1165
+RIBOFLAVIN_NUTRIENT_ID = 1166
+NIACIN_NUTRIENT_ID = 1167
+PANTOTHENIC_ACID_NUTRIENT_ID = 1170
+VITAMIN_B6_NUTRIENT_ID = 1175
+BIOTIN_NUTRIENT_ID = 1176
+FOLATE_NUTRIENT_ID = 1177
+VITAMIN_B12_NUTRIENT_ID = 1178
+CHOLINE_NUTRIENT_ID = 1180
+VITAMIN_K_NUTRIENT_ID = 1183
+ADDED_SUGARS_NUTRIENT_ID = 1235
+CHOLESTEROL_NUTRIENT_ID = 1253
+TRANS_FAT_NUTRIENT_ID = 1257
+SATURATED_FAT_NUTRIENT_ID = 1258
+OMEGA_3_DHA_NUTRIENT_ID = 1272
+OMEGA_3_EPA_NUTRIENT_ID = 1278
+OMEGA_3_DPA_NUTRIENT_ID = 1280
+OMEGA_3_ALA_NUTRIENT_ID = 1404
+MONOUNSATURATED_FAT_NUTRIENT_ID = 1292
+POLYUNSATURATED_FAT_NUTRIENT_ID = 1293
+
+LABEL_LIPID_NUTRIENT_IDS = [
+    FAT_NUTRIENT_ID,
+    SATURATED_FAT_NUTRIENT_ID,
+    TRANS_FAT_NUTRIENT_ID,
+    POLYUNSATURATED_FAT_NUTRIENT_ID,
+    MONOUNSATURATED_FAT_NUTRIENT_ID,
+]
+
+LABEL_CARBOHYDRATE_NUTRIENT_IDS = [
+    CARBOHYDRATE_NUTRIENT_ID,
+    TOTAL_FIBER_NUTRIENT_ID,
+    SOLUBLE_FIBER_NUTRIENT_ID,
+    INSOLUBLE_FIBER_NUTRIENT_ID,
+    TOTAL_SUGARS_NUTRIENT_ID,
+    ADDED_SUGARS_NUTRIENT_ID,
+    SUGAR_ALCOHOL_NUTRIENT_ID,
+]
+
+LABEL_TOP_HALF_NUTRIENT_IDS = [
+    *LABEL_LIPID_NUTRIENT_IDS,
+    CHOLESTEROL_NUTRIENT_ID,
+    SODIUM_NUTRIENT_ID,
+    FLOURIDE_NUTRIENT_ID,
+    *LABEL_CARBOHYDRATE_NUTRIENT_IDS,
+    PROTEIN_NUTRIENT_ID,
+]
+
+LABEL_VITAMIN_MINERAL_NUTRIENT_IDS = [
+    VITAMIN_D_NUTRIENT_ID,
+    CALCIUM_NUTRIENT_ID,
+    IRON_NUTRIENT_ID,
+    POTASSIUM_NUTRIENT_ID,
+    VITAMIN_A_NUTRIENT_ID,
+    VITAMIN_C_NUTRIENT_ID,
+    VITAMIN_E_NUTRIENT_ID,
+    VITAMIN_K_NUTRIENT_ID,
+    THIAMIN_NUTRIENT_ID,
+    RIBOFLAVIN_NUTRIENT_ID,
+    NIACIN_NUTRIENT_ID,
+    VITAMIN_B6_NUTRIENT_ID,
+    FOLATE_NUTRIENT_ID,
+    VITAMIN_B12_NUTRIENT_ID,
+    BIOTIN_NUTRIENT_ID,
+    PANTOTHENIC_ACID_NUTRIENT_ID,
+    PHOSPHORUS_NUTRIENT_ID,
+    IODINE_NUTRIENT_ID,
+    MAGNESIUM_NUTRIENT_ID,
+    ZINC_NUTRIENT_ID,
+    SELENIUM_NUTRIENT_ID,
+    COPPER_NUTRIENT_ID,
+    MANGANESE_NUTRIENT_ID,
+    CHROMIUM_NUTRIENT_ID,
+    MOLYBDENUM_NUTRIENT_ID,
+    CHOLINE_NUTRIENT_ID,
+]
+
+LABEL_NUTRIENT_IDS = [
+    ENERGY_NUTRIENT_ID,
+    *LABEL_TOP_HALF_NUTRIENT_IDS,
+    *LABEL_VITAMIN_MINERAL_NUTRIENT_IDS,
+]
+
+FORM_MACRO_NUTRIENT_IDS = [ENERGY_NUTRIENT_ID, PROTEIN_NUTRIENT_ID, FAT_NUTRIENT_ID, CARBOHYDRATE_NUTRIENT_ID]
+
+FORM_CARBOHYDRATE_NUTRIENT_IDS = [
+    TOTAL_FIBER_NUTRIENT_ID,
+    SOLUBLE_FIBER_NUTRIENT_ID,
+    INSOLUBLE_FIBER_NUTRIENT_ID,
+    TOTAL_SUGARS_NUTRIENT_ID,
+    ADDED_SUGARS_NUTRIENT_ID,
+    SUGAR_ALCOHOL_NUTRIENT_ID,
+]
+
+FORM_LIPID_NUTRIENT_IDS = [
+    SATURATED_FAT_NUTRIENT_ID,
+    TRANS_FAT_NUTRIENT_ID,
+    POLYUNSATURATED_FAT_NUTRIENT_ID,
+    MONOUNSATURATED_FAT_NUTRIENT_ID,
+    CHOLESTEROL_NUTRIENT_ID,
+    OMEGA_3_DHA_NUTRIENT_ID,
+    OMEGA_3_EPA_NUTRIENT_ID,
+    OMEGA_3_DPA_NUTRIENT_ID,
+    OMEGA_3_ALA_NUTRIENT_ID,
+]
+
+FORM_VITAMIN_MINERAL_NUTRIENT_IDS = [SODIUM_NUTRIENT_ID, FLOURIDE_NUTRIENT_ID, *LABEL_VITAMIN_MINERAL_NUTRIENT_IDS]
+
+TRACKER_NUTRIENT_IDS = [
+    *FORM_MACRO_NUTRIENT_IDS,
+    *FORM_CARBOHYDRATE_NUTRIENT_IDS,
+    *FORM_LIPID_NUTRIENT_IDS,
+    *FORM_VITAMIN_MINERAL_NUTRIENT_IDS,
+]
+
+FORM_NUTRIENT_IDS = [*LABEL_NUTRIENT_IDS]
+
+FORM_REQUIRED_NUTRIENT_IDS = [
+    ENERGY_NUTRIENT_ID,
+]
+
+LOW_COVERAGE_NUTRIENT_IDS = [
+    BIOTIN_NUTRIENT_ID,
+    CHROMIUM_NUTRIENT_ID,
+    MOLYBDENUM_NUTRIENT_ID,
+    VITAMIN_K_NUTRIENT_ID,
+]
+
+RED_NUTRIENT_IDS = [
+    ENERGY_NUTRIENT_ID,
+]
+
+YELLOW_NUTRIENT_IDS = [
+    PROTEIN_NUTRIENT_ID,
+]
+
+GREEN_NUTRIENT_IDS = [
+    FAT_NUTRIENT_ID,
+    *FORM_LIPID_NUTRIENT_IDS,
+]
+
+BLUE_NUTRIENT_IDS = [
+    CARBOHYDRATE_NUTRIENT_ID,
+    *FORM_CARBOHYDRATE_NUTRIENT_IDS,
+]
+
+UNDETERMINED_MEASURE_UNIT_ID = 9999
+PORTION_DESCRIPTION_NOT_SPECIFIED = "Quantity not specified"
+BRANDED_FOOD_PORTION_ID = 12345678901234
+HUNDRED_SERVING_ID = -1
+ONE_SERVING_ID = -2
+ONE_OZ_SERVING_ID = -3
+
+
+FORM_SERVING_SIZE_UNITS = [
+    "1/8",
+    "1/6",
+    "1/5",
+    "1/4",
+    "1/3",
+    "3/8",
+    "2/5",
+    "1/2",
+    "3/5",
+    "5/8",
+    "2/3",
+    "3/4",
+    "4/5",
+    "5/6",
+    "7/8",
+    "1",
+    "3/2",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+]
+
+# URL constants
+URL_MY_FOODS = "my_foods"
+URL_CREATE_FOOD = "my_food_create"
+URL_DELETE_FOOD = "my_food_delete"
+URL_DETAIL_FOOD = "my_food"
+URL_DETAIL_INGREDIENT = "my_ingredient"
+URL_EDIT_FOOD = "my_food_edit"
+URL_LOG_FOOD = "my_food_log"
+URL_LOG_INGREDIENT = "my_ingredient_log"
+
+FOOD_URLS = [
+    URL_MY_FOODS,
+    URL_CREATE_FOOD,
+    URL_DELETE_FOOD,
+    URL_DETAIL_INGREDIENT,
+    URL_LOG_INGREDIENT,
+    URL_EDIT_FOOD,
+    URL_DETAIL_FOOD,
+]
+
+URL_MY_RECIPES = "my_recipes"
+URL_CREATE_RECIPE = "my_recipe_create"
+URL_DELETE_RECIPE = "my_recipe_delete"
+URL_DETAIL_RECIPE = "my_recipe"
+URL_EDIT_RECIPE = "my_recipe_edit"
+URL_LOG_RECIPE = "my_recipe_log"
+
+RECIPE_URLS = [
+    URL_MY_RECIPES,
+    URL_CREATE_RECIPE,
+    URL_DELETE_RECIPE,
+    URL_DETAIL_RECIPE,
+    URL_EDIT_RECIPE,
+    URL_LOG_RECIPE,
+]
+
+URL_MY_MEALS = "my_meals"
+URL_CREATE_MEAL = "my_meal_create"
+URL_DELETE_MEAL = "my_meal_delete"
+URL_DETAIL_MEAL = "my_meal"
+URL_EDIT_MEAL = "my_meal_edit"
+
+MEAL_URLS = [
+    URL_MY_MEALS,
+    URL_CREATE_MEAL,
+    URL_DELETE_MEAL,
+    URL_DETAIL_MEAL,
+    URL_EDIT_MEAL,
+]
+
+URL_NUTRITION = "my_nutrition"
+URL_NUTRIENT = "nutrient"
+URL_PROFILE = "my_profile"
+URL_HOME = "index"
+URL_SEARCH = "search"
+
+SEARCH_URLS = [
+    URL_SEARCH,
+    URL_DETAIL_FOOD,
+    URL_LOG_FOOD,
+]
+
+URL_MY_MEALPLAN = "my_mealplan"
+
+MEALPLAN_URLS = [
+    URL_MY_MEALPLAN,
+]
+
+URL_ACCOUNT_LOGIN = "account_login"
+URL_ACCOUNT_SIGNUP = "account_signup"
+URL_ACCOUNT_LOGOUT = "account_logout"
+
+# URL Button Text
+TEXT_ACCOUNT_LOGIN = _("Login")
+TEXT_ACCOUNT_SIGNUP = _("Sign up")
+TEXT_ACCOUNT_LOGOUT = _("Sign out")
+
+TEXT_CREATE_FOOD = _("Add Food")
+TEXT_DELETE_FOOD = _("Delete Food")
+TEXT_EDIT_FOOD = _("Edit Food")
+TEXT_LOG_FOOD = _("Log Food")
+
+TEXT_CREATE_RECIPE = _("Add Recipe")
+TEXT_DELETE_RECIPE = _("Delete Recipe")
+TEXT_EDIT_RECIPE = _("Edit Recipe")
+TEXT_LOG_RECIPE = _("Log Recipe")
+
+TEXT_CREATE_MEAL = _("Add Meal")
+TEXT_DELETE_MEAL = _("Delete Meal")
+TEXT_EDIT_MEAL = _("Edit Meal")
+
+TEXT_NUTRITION = _("Nutrition Goals")
+TEXT_CREATE_NUTRITION = _("Add Goals")
+TEXT_EDIT_NUTRITION = _("Edit Goals")
+
+TEXT_PROFILE = _("My Profile")
+TEXT_MEALPLAN = _("Mealplan")
+TEXT_DELETE = _("Delete")
+
+DISPLAY_DATE_FORMAT = "D, d M Y"
+
+# User facing messages displayed in views
+MESSAGE_ERROR_PARAM_PARSE = _("Error parsing parameters.")
+MESSAGE_ERROR_UNKNOWN_ERROR = _("Unknown error, operation failed.")
+MESSAGE_ERROR_UNSUPPORTED_ACTION = _("Unsupported action.")
+MESSAGE_ERROR_INVALID_ID = _("Error validating the source ID.")
+MESSAGE_ERROR_INVALID_SEARCH = _("The search query was not formatted correctly, please try a different query.")
+MESSAGE_ERROR_MISSING_FOOD = _("Sorry, we didn't find the source food.")
+MESSAGE_ERROR_MISSING_MEAL = _("Sorry, we didn't find the requested meal.")
+MESSAGE_ERROR_MISSING_RECIPE = _("Sorry, we didn't find the requested recipe.")
+MESSAGE_ERROR_INVALID_PORTION = _("Sorry, we didn't understand the serving details.")
+MESSAGE_ERROR_DELETE_NOT_ALLOWED = _("Sorry, this item cannot be deleted.")
+MESSAGE_ERROR_NUTRIENT_NOT_FOUND = _("Nutrient information not found.")
+MESSAGE_SUCCESS_FOOD_SAVE = _("Food saved.")
+MESSAGE_SUCCESS_FOOD_DELETE = _("Food deleted.")
+MESSAGE_SUCCESS_FOOD_LOG = _("Food logged.")
+MESSAGE_SUCCESS_RECIPE_SAVE = _("Recipe saved.")
+MESSAGE_SUCCESS_RECIPE_DELETE = _("Recipe deleted.")
+MESSAGE_SUCCESS_RECIPE_LOG = _("Recipe logged.")
+MESSAGE_SUCCESS_MEAL_SAVE = _("Meal saved.")
+MESSAGE_SUCCESS_MEAL_DELETE = _("Meal deleted.")
+MESSAGE_SUCCESS_NUTRITION_SAVE = _("Nutrition goals saved.")
+MESSAGE_SUCCESS_PROFILE_SAVE = _("Profile saved.")
+MESSAGE_SUCCESS_MEALPLAN_SAVE = _("Mealplan saved.")
+MESSAGE_INFO_MEALPLAN_NOT_SAVED = _("Mealplan suggestions not saved.")
+
+# Pagination constants
+PAGE_SIZE = 20
+AUTOCOMPLETE_PAGE_SIZE = 10
+PAGE_ORPHAN_SIZE = 5
+FORM_MAX_UUIDS = 100
+TOP_DB_FOODS_PER_NUTRIENT = 20
+
+# Internal constants for meal containers
+MEALS_NUTRIENTS = 1
+MEAL_NUTRIENTS = 2
+RECIPES_NUTRIENTS = 3
+RECIPE_NUTRIENTS = 4
+FOODS_NUTRIENTS = 5
+FOOD_NUTRIENTS = 6
+MEALPLAN_NUTRIENTS = 7
+
+# Internal constants for rdi values
+FDA_ADULT = 1
+FDA_INFANT = 2
+FDA_CHILDREN = 3
+FDA_PREGNANT = 4
+
+# Internal constants for threshold ID type
+THRESHOLD_ID_FOOD = 1
+THRESHOLD_ID_CATEGORY = 2
+THRESHOLD_ID_NUTRIENT = 3
+
+MAX_FAMILY_SIZE = 10
+
+MODEL_CLASS_LFOOD = "UserIngredient"
+MODEL_CLASS_LRECIPE = "UserRecipe"

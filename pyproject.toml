@@ -1,0 +1,44 @@
+[tool.black]
+line-length = 119
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+add_imports = "from __future__ import annotations"
+multi_line_output = 3
+line_length = 119
+default_section = "THIRDPARTY"
+known_third_party = ["allauth", "bitfield", "boto3", "botocore", "bs4", "crispy_forms", "decouple", "dj_database_url", "dj_rest_auth", "django", "django_heroku", "drf_braces", "measurement", "ortools", "rest_framework", "rest_framework_api_key", "sentry_sdk"]
+known_first_party = ["nutrition_tracker", "accounts", "users"]
+skip = ["__init__.py"]
+
+[tool.pylint.MASTER]
+ignore-patterns = "test_.*?py"
+
+[tool.pylint.MESSAGE_CONTROL]
+disable = """
+    line-too-long,
+    abstract-method,
+    no-member,
+    duplicate-code,
+"""
+enable = "useless-suppression"
+
+[tool.pylint.REPORTS]
+reports="no"
+
+[tool.pylint.FORMAT]
+max-line-length="119"
+
+[tool.pylint.BASIC]
+good-names = "_,i,e,setUp,tearDown,maxDiff"
+
+[tool.pylint.SIMILARITIES]
+# Minimum lines number of a similarity.
+min-similarity-lines = 4
+# Ignore comments when computing similarities.
+ignore-comments = "yes"
+# Ignore docstrings when computing similarities.
+ignore-docstrings = "yes"
+# Ignore imports when computing similarities.
+ignore-imports = "yes"

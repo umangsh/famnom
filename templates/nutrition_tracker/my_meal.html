@@ -1,0 +1,33 @@
+{% extends 'nutrition_tracker/my_kitchen_base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block head_title %}{{ lmeal.display_name }}{% endblock %}
+
+{% block kitchen_content %}
+<div class="row justify-content-between align-items-center mx-auto">
+  <div class="mr-auto p-2 w-75">
+    <div class="col px-0">
+      <p class="display-4 mb-0">{{ lmeal.meal_type }}</p>
+      <p class="m-0 text-muted line-height-1 font-size-20">{{ lmeal.display_date }}</p>
+    </div>
+  </div>
+  <div class="form-action-row d-flex p-2">
+    {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=lmeal editurl=URL_EDIT_MEAL edittext=TEXT_EDIT_MEAL deleteurl=URL_DELETE_MEAL deletetext=TEXT_DELETE_MEAL %}
+  </div>
+</div>
+
+<div class="row justify-content-between m-auto">
+  <div class="col-lg-6 pt-3 pl-1">
+    {% url URL_DETAIL_MEAL lmeal.external_id as nexturl %}
+    {% include 'nutrition_tracker/includes/member_items.html' with lparent=lmeal nexturl=nexturl %}
+  </div>
+
+  <div class="col-lg-6 pt-3 d-flex pl-1">
+    {% include 'nutrition_tracker/includes/nutrition_label.html' with label_type=MEAL_NUTRIENTS %}
+  </div>
+</div>
+{% endblock %}

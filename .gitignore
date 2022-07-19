@@ -1,0 +1,24 @@
+# pycache
+__pycache__/
+*.py[cod]
+
+# environment vars, python-decouple
+.env
+
+# Node modules
+node_modules
+package-lock.json
+
+# staticfiles
+/static
+/staticfiles
+
+# macOS
+.DS_Store
+
+# Coverage reports
+.coverage
+coverage.xml
+
+# VSCode
+.vscode

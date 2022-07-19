@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<div class="col-lg-12 mt-3 px-4">
+  {% if recent_lfoods %}
+  {% include 'nutrition_tracker/includes/items_module.html' with item_lobjects=recent_lfoods %}
+  {% else %}
+  {% translate "No recent meals found." as prompt %}
+  {% translate "Log a meal for today." as subprompt %}
+  {% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_CREATE_MEAL buttontext=TEXT_CREATE_MEAL %}
+  {% endif %}
+</div>

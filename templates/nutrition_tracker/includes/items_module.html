@@ -1,0 +1,24 @@
+{% load utils %}
+
+<ul class="item-list-main list-group list-group-flush {{ wrapper_class }}">
+  {% for item_lobject in item_lobjects %}
+  {% with item_lobject|get_classname as modelclass %}
+  {% if modelclass == MODEL_CLASS_LFOOD %}
+  {% include 'nutrition_tracker/includes/module_food_item.html' with item_lfood=item_lobject %}
+  {% endif %}
+  {% if modelclass == MODEL_CLASS_LRECIPE %}
+  {% include 'nutrition_tracker/includes/module_food_item.html' with item_lrecipe=item_lobject %}
+  {% endif %}
+  {% endwith %}
+  {% endfor %}
+
+  {% for item_cfood in item_cfoods %}
+  {% include 'nutrition_tracker/includes/module_food_item.html' with item_cfood=item_cfood %}
+  {% endfor %}
+</ul>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+      initTooltips();
+  });
+</script>

@@ -1,0 +1,189 @@
+<form  class="form-horizontal" method="post" > <input type="hidden" name="external_id" value="{RECIPE_EXTERNAL_ID}" id="id_external_id"> <div id="div_id_name" class="form-group row mb-1 mx-auto"> <label for="id_name" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <input type="text" name="name" value="Test Recipe" class="textinput textInput form-control" required id="id_name"> </div> </div> <div id="div_id_recipe_date" class="form-group row mb-1 mx-auto"> <label for="id_recipe_date" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Recipe date
+            </label> <div class="col-lg-8 pl-0"> <input type="text" name="recipe_date" value="{TODAY_DATE}" class="dateinput form-control" id="id_recipe_date"> </div> </div> <div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Add foods from your Kitchen</p>
+</div>
+<div
+    class="font-size-12" > <style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style> <div> <input type="hidden" name="food-TOTAL_FORMS" value="2" id="id_food-TOTAL_FORMS"> <input type="hidden" name="food-INITIAL_FORMS" value="1" id="id_food-INITIAL_FORMS"> <input type="hidden" name="food-MIN_NUM_FORMS" value="0" id="id_food-MIN_NUM_FORMS"> <input type="hidden" name="food-MAX_NUM_FORMS" value="1000" id="id_food-MAX_NUM_FORMS"> </div> <div
+    class="formset_row-food" > <div
+    class="clearfix" > </div> <div id="div_id_food-0-child_external_id" class="form-group row mb-1 mx-auto"> <label for="id_food-0-child_external_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="food-0-child_external_id" class="foods-dropdown select custom-select" onchange="getServings(this);getNutrients(this, true);" id="id_food-0-child_external_id"> <option value="{FOOD_EXTERNAL_ID}" selected>test</option>
+
+</select> </div> </div> <div id="div_id_food-0-serving" class="form-group row mb-1 mx-auto"> <label for="id_food-0-serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving Size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="food-0-serving" onchange="updateNutrients();" class="selectwithoptionattrs custom-select" id="id_food-0-serving"> <option value="-1" data-gm-wt="100" data-wt-unit="g">100g</option> <option value="-2" selected data-gm-wt="1" data-wt-unit="g">1g</option> <option value="-3" data-gm-wt="28.3495" data-wt-unit="g">1oz</option>
+
+</select> </div> </div> <div id="div_id_food-0-quantity" class="form-group row mb-1 mx-auto"> <label for="id_food-0-quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Servings
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="food-0-quantity" value="50.0" min="0" step="any" onchange="updateNutrients();" class="numberinput form-control" id="id_food-0-quantity"> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_food-0-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="food-0-DELETE" class="checkboxinput custom-control-input" id="id_food-0-DELETE"> <label for="id_food-0-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="food-0-id" value="1" id="id_food-0-id"> <div
+    class="formset_row-food" > <div
+    class="clearfix" > </div> <div id="div_id_food-1-child_external_id" class="form-group row mb-1 mx-auto"> <label for="id_food-1-child_external_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="food-1-child_external_id" class="foods-dropdown select custom-select" onchange="getServings(this);getNutrients(this, true);" id="id_food-1-child_external_id">
+</select> </div> </div> <div id="div_id_food-1-serving" class="form-group row mb-1 mx-auto"> <label for="id_food-1-serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving Size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="food-1-serving" onchange="updateNutrients();" class="select custom-select" id="id_food-1-serving">
+</select> </div> </div> <div id="div_id_food-1-quantity" class="form-group row mb-1 mx-auto"> <label for="id_food-1-quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Servings
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="food-1-quantity" min="0" step="any" onchange="updateNutrients();" class="numberinput form-control" id="id_food-1-quantity"> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_food-1-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="food-1-DELETE" class="checkboxinput custom-control-input" id="id_food-1-DELETE"> <label for="id_food-1-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="food-1-id" id="id_food-1-id"> <script src="/static/nutrition_tracker/js/jquery.formset.js"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-food').formset({
+    addText: 'Add more',
+    deleteText: 'Delete',
+    prefix: 'food',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 ',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left offset-lg-4',
+    added: function() {
+      initFoodsDropdown();;  // eslint-disable-line
+    },
+    removed: function() {
+      updateNutrients();;  // eslint-disable-line
+    },
+  });
+</script>
+
+</div>
+<div
+    class="clearfix" > </div>
+<div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Add recipes from your Kitchen</p>
+</div>
+<div
+    class="font-size-12" > <style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style> <div> <input type="hidden" name="recipe-TOTAL_FORMS" value="2" id="id_recipe-TOTAL_FORMS"> <input type="hidden" name="recipe-INITIAL_FORMS" value="1" id="id_recipe-INITIAL_FORMS"> <input type="hidden" name="recipe-MIN_NUM_FORMS" value="0" id="id_recipe-MIN_NUM_FORMS"> <input type="hidden" name="recipe-MAX_NUM_FORMS" value="1000" id="id_recipe-MAX_NUM_FORMS"> </div> <div
+    class="formset_row-recipe" > <div
+    class="clearfix" > </div> <div id="div_id_recipe-0-child_external_id" class="form-group row mb-1 mx-auto"> <label for="id_recipe-0-child_external_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="recipe-0-child_external_id" class="recipes-dropdown select custom-select" onchange="getServings(this);getNutrients(this, true);" id="id_recipe-0-child_external_id"> <option value="{RECIPE_2_EXTERNAL_ID}" selected>Test Recipe 2: Today</option>
+
+</select> </div> </div> <div id="div_id_recipe-0-serving" class="form-group row mb-1 mx-auto"> <label for="id_recipe-0-serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving Size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="recipe-0-serving" onchange="updateNutrients();" class="selectwithoptionattrs custom-select" id="id_recipe-0-serving"> <option value="-1" data-gm-wt="100" data-wt-unit="g">100g</option> <option value="-2" selected data-gm-wt="1" data-wt-unit="g">1g</option> <option value="-3" data-gm-wt="28.3495" data-wt-unit="g">1oz</option>
+
+</select> </div> </div> <div id="div_id_recipe-0-quantity" class="form-group row mb-1 mx-auto"> <label for="id_recipe-0-quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Servings
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="recipe-0-quantity" value="50.0" min="0" step="any" onchange="updateNutrients();" class="numberinput form-control" id="id_recipe-0-quantity"> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_recipe-0-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="recipe-0-DELETE" class="checkboxinput custom-control-input" id="id_recipe-0-DELETE"> <label for="id_recipe-0-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="recipe-0-id" value="2" id="id_recipe-0-id"> <div
+    class="formset_row-recipe" > <div
+    class="clearfix" > </div> <div id="div_id_recipe-1-child_external_id" class="form-group row mb-1 mx-auto"> <label for="id_recipe-1-child_external_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="recipe-1-child_external_id" class="recipes-dropdown select custom-select" onchange="getServings(this);getNutrients(this, true);" id="id_recipe-1-child_external_id">
+</select> </div> </div> <div id="div_id_recipe-1-serving" class="form-group row mb-1 mx-auto"> <label for="id_recipe-1-serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving Size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="recipe-1-serving" onchange="updateNutrients();" class="select custom-select" id="id_recipe-1-serving">
+</select> </div> </div> <div id="div_id_recipe-1-quantity" class="form-group row mb-1 mx-auto"> <label for="id_recipe-1-quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Servings
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="recipe-1-quantity" min="0" step="any" onchange="updateNutrients();" class="numberinput form-control" id="id_recipe-1-quantity"> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_recipe-1-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="recipe-1-DELETE" class="checkboxinput custom-control-input" id="id_recipe-1-DELETE"> <label for="id_recipe-1-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="recipe-1-id" id="id_recipe-1-id"> <script src="/static/nutrition_tracker/js/jquery.formset.js"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-recipe').formset({
+    addText: 'Add more',
+    deleteText: 'Delete',
+    prefix: 'recipe',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 ',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left offset-lg-4',
+    added: function() {
+      initRecipesDropdown();;  // eslint-disable-line
+    },
+    removed: function() {
+      updateNutrients();;  // eslint-disable-line
+    },
+  });
+</script>
+
+</div>
+<div
+    class="clearfix" > </div>
+<div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Servings</p>
+</div>
+<div
+    class="font-size-12" > <style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style> <div> <input type="hidden" name="servings-TOTAL_FORMS" value="2" id="id_servings-TOTAL_FORMS"> <input type="hidden" name="servings-INITIAL_FORMS" value="1" id="id_servings-INITIAL_FORMS"> <input type="hidden" name="servings-MIN_NUM_FORMS" value="0" id="id_servings-MIN_NUM_FORMS"> <input type="hidden" name="servings-MAX_NUM_FORMS" value="1000" id="id_servings-MAX_NUM_FORMS"> </div> <div
+    class="formset_row-servings" > <div
+    class="clearfix" > </div> <div id="div_id_servings-0-household_quantity" class="form-group row mb-1 mx-auto"> <label for="id_servings-0-household_quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Household quantity
+            </label> <div class="col-lg-8 pl-0"> <select name="servings-0-household_quantity" onchange="updateDisplayServing()" class="select custom-select" id="id_servings-0-household_quantity"> <option value="" selected>Select quantity</option> <option value="1/8">1/8</option> <option value="1/6">1/6</option> <option value="1/5">1/5</option> <option value="1/4">1/4</option> <option value="1/3">1/3</option> <option value="3/8">3/8</option> <option value="2/5">2/5</option> <option value="1/2">1/2</option> <option value="3/5">3/5</option> <option value="5/8">5/8</option> <option value="2/3">2/3</option> <option value="3/4">3/4</option> <option value="4/5">4/5</option> <option value="5/6">5/6</option> <option value="7/8">7/8</option> <option value="1">1</option> <option value="3/2">3/2</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option>
+
+</select> </div> </div> <div id="div_id_servings-0-measure_unit" class="form-group row mb-1 mx-auto"> <label for="id_servings-0-measure_unit" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Household unit
+            </label> <div class="col-lg-8 pl-0"> <select name="servings-0-measure_unit" onchange="updateDisplayServing()" class="select custom-select" id="id_servings-0-measure_unit"> <option value="" selected>Select unit</option> <option value="1066">back</option> <option value="1088">bag</option> <option value="1089">bagel</option> <option value="1119">banana</option> <option value="1013">bar</option> <option value="1014">bird</option> <option value="1015">biscuit</option> <option value="1016">bottle</option> <option value="1090">bowl</option> <option value="1017">box</option> <option value="1091">breadstick</option> <option value="1018">breast</option> <option value="1092">bulb</option> <option value="1085">bun</option> <option value="1117">bunch</option> <option value="1080">burrito</option> <option value="1093">cake</option> <option value="1019">can</option> <option value="1094">carton</option> <option value="1020">chicken</option> <option value="1083">chips</option> <option value="1021">chop</option> <option value="1095">chunk</option> <option value="1023">container</option> <option value="1096">contents</option> <option value="1022">cookie</option> <option value="1076">corndog</option> <option value="1024">cracker</option> <option value="1086">crust</option> <option value="1006">cubic centimeter</option> <option value="1005">cubic inch</option> <option value="1000">cup</option> <option value="1097">cutlet</option> <option value="1098">doughnut</option> <option value="1025">drink</option> <option value="1012">dripping w</option> <option value="1026">drumstick</option> <option value="1071">each</option> <option value="1099">egg</option> <option value="1072">filet</option> <option value="1027">fillet</option> <option value="1100">fish</option> <option value="1009">fl oz</option> <option value="1101">foreshank</option> <option value="1102">frankfurter</option> <option value="1103">fries</option> <option value="1028">fruit</option> <option value="1007">gallon</option> <option value="1104">head</option> <option value="1105">jar</option> <option value="1029">large</option> <option value="1030">lb</option> <option value="1031">leaf</option> <option value="1032">leg</option> <option value="1033">link</option> <option value="1034">links</option> <option value="1003">liter</option> <option value="1035">loaf</option> <option value="1106">loin</option> <option value="1063">medallion</option> <option value="1036">medium</option> <option value="1004">milliliter</option> <option value="1037">muffin</option> <option value="1074">nugget</option> <option value="1067">olive</option> <option value="1120">onion</option> <option value="1069">order</option> <option value="1061">orig ckd g</option> <option value="1062">orig rw g</option> <option value="1038">oz</option> <option value="1039">package</option> <option value="1040">packet</option> <option value="1010">paired cooked w</option> <option value="1011">paired raw w</option> <option value="1107">pancake</option> <option value="1042">patties</option> <option value="1041">patty</option> <option value="1064">pie</option> <option value="1043">piece</option> <option value="1044">pieces</option> <option value="1008">pint</option> <option value="1108">pizza</option> <option value="1073">plantain</option> <option value="1068">pocket</option> <option value="1075">pretzel</option> <option value="1045">quart</option> <option value="1109">rack</option> <option value="1110">ribs</option> <option value="1046">roast</option> <option value="1111">roll</option> <option value="1078">sandwich</option> <option value="1047">sausage</option> <option value="1048">scoop</option> <option value="1049">serving</option> <option value="1112">shank</option> <option value="1087">sheet</option> <option value="1084">shell</option> <option value="1113">shoulder</option> <option value="1070">shrimp</option> <option value="1114">skin</option> <option value="1050">slice</option> <option value="1051">slices</option> <option value="1052">small</option> <option value="1077">spear</option> <option value="1053">stalk</option> <option value="1054">steak</option> <option value="1055">stick</option> <option value="1056">strip</option> <option value="1001">tablespoon</option> <option value="1118">tablespoons</option> <option value="1057">tablet</option> <option value="1081">taco</option> <option value="1002">teaspoon</option> <option value="1058">thigh</option> <option value="1082">tomatoes</option> <option value="1079">tortilla</option> <option value="9999">undetermined</option> <option value="1059">unit</option> <option value="1115">wafers</option> <option value="1060">wedge</option> <option value="1065">wing</option> <option value="1116">wrap</option>
+
+</select> </div> </div> <div id="div_id_servings-0-serving_size" class="form-group row mb-1 mx-auto"> <label for="id_servings-0-serving_size" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <input type="number" name="servings-0-serving_size" value="200.0" min="0" step="any" onchange="updateDisplayServing()" class="numberinput form-control" id="id_servings-0-serving_size"> </div> </div> <div id="div_id_servings-0-serving_size_unit" class="form-group row mb-1 mx-auto"> <label for="id_servings-0-serving_size_unit" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving unit<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="servings-0-serving_size_unit" onchange="updateDisplayServing()" class="select custom-select" id="id_servings-0-serving_size_unit"> <option value="">Select unit</option> <option value="g" selected>g</option> <option value="ml">ml</option>
+
+</select> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_servings-0-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="servings-0-DELETE" class="checkboxinput custom-control-input" id="id_servings-0-DELETE"> <label for="id_servings-0-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="servings-0-id" value="3" id="id_servings-0-id"> <div
+    class="formset_row-servings" > <div
+    class="clearfix" > </div> <div id="div_id_servings-1-household_quantity" class="form-group row mb-1 mx-auto"> <label for="id_servings-1-household_quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Household quantity
+            </label> <div class="col-lg-8 pl-0"> <select name="servings-1-household_quantity" onchange="updateDisplayServing()" class="select custom-select" id="id_servings-1-household_quantity"> <option value="" selected>Select quantity</option> <option value="1/8">1/8</option> <option value="1/6">1/6</option> <option value="1/5">1/5</option> <option value="1/4">1/4</option> <option value="1/3">1/3</option> <option value="3/8">3/8</option> <option value="2/5">2/5</option> <option value="1/2">1/2</option> <option value="3/5">3/5</option> <option value="5/8">5/8</option> <option value="2/3">2/3</option> <option value="3/4">3/4</option> <option value="4/5">4/5</option> <option value="5/6">5/6</option> <option value="7/8">7/8</option> <option value="1">1</option> <option value="3/2">3/2</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option>
+
+</select> </div> </div> <div id="div_id_servings-1-measure_unit" class="form-group row mb-1 mx-auto"> <label for="id_servings-1-measure_unit" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Household unit
+            </label> <div class="col-lg-8 pl-0"> <select name="servings-1-measure_unit" onchange="updateDisplayServing()" class="select custom-select" id="id_servings-1-measure_unit"> <option value="" selected>Select unit</option> <option value="1066">back</option> <option value="1088">bag</option> <option value="1089">bagel</option> <option value="1119">banana</option> <option value="1013">bar</option> <option value="1014">bird</option> <option value="1015">biscuit</option> <option value="1016">bottle</option> <option value="1090">bowl</option> <option value="1017">box</option> <option value="1091">breadstick</option> <option value="1018">breast</option> <option value="1092">bulb</option> <option value="1085">bun</option> <option value="1117">bunch</option> <option value="1080">burrito</option> <option value="1093">cake</option> <option value="1019">can</option> <option value="1094">carton</option> <option value="1020">chicken</option> <option value="1083">chips</option> <option value="1021">chop</option> <option value="1095">chunk</option> <option value="1023">container</option> <option value="1096">contents</option> <option value="1022">cookie</option> <option value="1076">corndog</option> <option value="1024">cracker</option> <option value="1086">crust</option> <option value="1006">cubic centimeter</option> <option value="1005">cubic inch</option> <option value="1000">cup</option> <option value="1097">cutlet</option> <option value="1098">doughnut</option> <option value="1025">drink</option> <option value="1012">dripping w</option> <option value="1026">drumstick</option> <option value="1071">each</option> <option value="1099">egg</option> <option value="1072">filet</option> <option value="1027">fillet</option> <option value="1100">fish</option> <option value="1009">fl oz</option> <option value="1101">foreshank</option> <option value="1102">frankfurter</option> <option value="1103">fries</option> <option value="1028">fruit</option> <option value="1007">gallon</option> <option value="1104">head</option> <option value="1105">jar</option> <option value="1029">large</option> <option value="1030">lb</option> <option value="1031">leaf</option> <option value="1032">leg</option> <option value="1033">link</option> <option value="1034">links</option> <option value="1003">liter</option> <option value="1035">loaf</option> <option value="1106">loin</option> <option value="1063">medallion</option> <option value="1036">medium</option> <option value="1004">milliliter</option> <option value="1037">muffin</option> <option value="1074">nugget</option> <option value="1067">olive</option> <option value="1120">onion</option> <option value="1069">order</option> <option value="1061">orig ckd g</option> <option value="1062">orig rw g</option> <option value="1038">oz</option> <option value="1039">package</option> <option value="1040">packet</option> <option value="1010">paired cooked w</option> <option value="1011">paired raw w</option> <option value="1107">pancake</option> <option value="1042">patties</option> <option value="1041">patty</option> <option value="1064">pie</option> <option value="1043">piece</option> <option value="1044">pieces</option> <option value="1008">pint</option> <option value="1108">pizza</option> <option value="1073">plantain</option> <option value="1068">pocket</option> <option value="1075">pretzel</option> <option value="1045">quart</option> <option value="1109">rack</option> <option value="1110">ribs</option> <option value="1046">roast</option> <option value="1111">roll</option> <option value="1078">sandwich</option> <option value="1047">sausage</option> <option value="1048">scoop</option> <option value="1049">serving</option> <option value="1112">shank</option> <option value="1087">sheet</option> <option value="1084">shell</option> <option value="1113">shoulder</option> <option value="1070">shrimp</option> <option value="1114">skin</option> <option value="1050">slice</option> <option value="1051">slices</option> <option value="1052">small</option> <option value="1077">spear</option> <option value="1053">stalk</option> <option value="1054">steak</option> <option value="1055">stick</option> <option value="1056">strip</option> <option value="1001">tablespoon</option> <option value="1118">tablespoons</option> <option value="1057">tablet</option> <option value="1081">taco</option> <option value="1002">teaspoon</option> <option value="1058">thigh</option> <option value="1082">tomatoes</option> <option value="1079">tortilla</option> <option value="9999">undetermined</option> <option value="1059">unit</option> <option value="1115">wafers</option> <option value="1060">wedge</option> <option value="1065">wing</option> <option value="1116">wrap</option>
+
+</select> </div> </div> <div id="div_id_servings-1-serving_size" class="form-group row mb-1 mx-auto"> <label for="id_servings-1-serving_size" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <input type="number" name="servings-1-serving_size" min="0" step="any" onchange="updateDisplayServing()" class="numberinput form-control" id="id_servings-1-serving_size"> </div> </div> <div id="div_id_servings-1-serving_size_unit" class="form-group row mb-1 mx-auto"> <label for="id_servings-1-serving_size_unit" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving unit<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="servings-1-serving_size_unit" onchange="updateDisplayServing()" class="select custom-select" id="id_servings-1-serving_size_unit"> <option value="" selected>Select unit</option> <option value="g">g</option> <option value="ml">ml</option>
+
+</select> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_servings-1-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="servings-1-DELETE" class="checkboxinput custom-control-input" id="id_servings-1-DELETE"> <label for="id_servings-1-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="servings-1-id" id="id_servings-1-id"> <script src="/static/nutrition_tracker/js/jquery.formset.js"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-servings').formset({
+    addText: 'Add more',
+    deleteText: 'Delete',
+    prefix: 'servings',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 ',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left offset-lg-4',
+    added: function() {
+      ;  // eslint-disable-line
+    },
+    removed: function() {
+      ;  // eslint-disable-line
+    },
+  });
+</script>
+
+</div>
+<div
+    class="clearfix" > </div>
+<div class="form-group row mx-auto"> <div class="aab col-lg-4 text-lg-right font-weight-bold pl-0"></div> <div class="col-lg-8 pl-0"> <input type="submit"
+    name="save"
+    value="Save Recipe"
+
+        class="btn btn-primary"
+        id="submit-id-save"
+
+     onclick="unhideSubmitSpinner()"
+    />
+<a class="btn btn-light" href="/my_recipes/">Cancel</a><div id="submit_spinner" class="spinner-border spinner-border-sm text-primary ml-1 d-none"role="status"><span class="sr-only">Loading...</span></div> </div>
+</div> </form>

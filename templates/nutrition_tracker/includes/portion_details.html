@@ -1,0 +1,24 @@
+{% load i18n %}
+{% load utils %}
+
+<div class="{{ wrapper_class }}">
+  <div class="{{ label_class }} my-auto">
+    {% translate "Serving Size" %}
+  </div>
+  <div class="{{ value_class }}">
+    <select id="id_serving" class="form-control" onchange="updateNutrients()">
+      {% for display_portion in food_portions %}
+      <option {% if default_portion.0 == display_portion.0 %}selected{% endif %} value="{{ display_portion.0 }}" data-gm-wt="{{ display_portion.2 }}" data-wt-unit="{{ display_portion.3 }}">{{ display_portion.1}}</option>
+      {% endfor %}
+    </select>
+  </div>
+</div>
+
+<div class="{{ wrapper_class }}">
+  <div class="{{ label_class }} my-auto">
+    {% translate "Total Servings" %}
+  </div>
+  <div class="{{ value_class }}">
+    <input type="number" name="quantity" min="0" step="any" onchange="updateNutrients()" class="numberinput form-control" id="id_quantity" value="{{ default_portion_quantity }}">
+  </div>
+</div>

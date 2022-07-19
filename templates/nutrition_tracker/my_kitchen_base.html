@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block subnav %}
+<nav class="navbar navbar-dark navbar-expand sub-header-bar p-0 line-height-1 ml-1">
+  <ul class="navbar-nav">
+    <li class="nav-item ml-2">
+      <a class="nav-link {% if request.path|highlight_foods %}text-white{% endif %}" href="{% url URL_MY_FOODS %}">{% translate "Foods" %}</a>
+    </li>
+    <li class="nav-item ml-2">
+      <a class="nav-link {% if request.path|highlight_recipes %}text-white{% endif %}" href="{% url URL_MY_RECIPES %}">{% translate "Recipes" %}</a>
+    </li>
+    <li class="nav-item ml-2">
+      <a class="nav-link {% if request.path|highlight_meals %}text-white{% endif %}" href="{% url URL_MY_MEALS %}">{% translate "Meals" %}</a>
+    </li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block authenticated_content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    {% block kitchen_content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'nutrition_tracker/js/kitchen_base.js' %}"></script>
+{% block kitchen_js %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,11 @@
+{% load static %}
+
+<li class="list-group-item d-flex justify-content-between align-items-center min-item-height">
+  <div class="mr-auto w-75">
+    <a class="text-reset" href="{% url detailurl kitchenobject.external_id %}">
+      <div class="font-weight-normal">{{ maintext }}</div>
+      <small class="text-muted">{{ subtext }}</small>
+    </a>
+  </div>
+  {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=kitchenobject logurl=logurl logtext=logtext editurl=editurl edittext=edittext deleteurl=deleteurl deletetext=deletetext %}
+</li>

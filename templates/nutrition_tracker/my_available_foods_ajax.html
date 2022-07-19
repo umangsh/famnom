@@ -1,0 +1,11 @@
+{% load i18n %}
+
+<div class="col-lg-12 mt-3 px-4">
+  {% if available_lfoods %}
+  {% include 'nutrition_tracker/includes/items_module.html' with item_lobjects=available_lfoods %}
+  {% else %}
+  {% translate "No items found in your Kitchen." as prompt %}
+  {% translate "Create and log your own food." as subprompt %}
+  {% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_CREATE_FOOD buttontext=TEXT_CREATE_FOOD %}
+  {% endif %}
+</div>

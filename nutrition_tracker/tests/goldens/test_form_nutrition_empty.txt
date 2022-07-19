@@ -1,0 +1,800 @@
+<form  class="form-horizontal" method="post" > <div id="div_id_date_of_birth" class="form-group row mb-1 mx-auto"> <label for="id_date_of_birth" class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0 requiredField">
+                Date of Birth<span class="asteriskField">*</span> </label> <div class="col-lg-6 pl-0 threshold-value"> <input type="text" name="date_of_birth" class="dateinput form-control" required id="id_date_of_birth" value="1988-02-02"> </div> </div> <div class="form-group row mx-auto"> <div class="offset-lg-3 col-lg-6 pl-0 threshold-value"> <div id="div_id_is_pregnant" class="custom-control custom-checkbox"> <input type="checkbox" name="is_pregnant" class="checkboxinput custom-control-input" id="id_is_pregnant"> <label for="id_is_pregnant" class="custom-control-label">
+                    Pregnant
+                </label> </div> </div> </div> <div
+     > <div
+    class="offset-lg-3" > <a class="btn btn-outline-primary btn-sm" onclick="updateFDARDIs()">Use FDA Recommended Daily Intake (RDIs)</a>
+</div>
+<div
+    class="offset-lg-3 mb-1" > <small id="fda_rdi_common" class="text-muted">Click to fill FDA recommended RDIs.</small><small id="fda_rdi_1" class="d-none text-muted">* RDIs for adults and children >= 4 years.</small><small id="fda_rdi_2" class="d-none text-muted">* RDIs for infants through 12 months.</small><small id="fda_rdi_3" class="d-none text-muted">* RDIs for children 1 through 3 years.</small><small id="fda_rdi_4" class="d-none text-muted">* RDIs for pregnant and/or lactating women.</small>
+</div>
+
+</div>
+<div
+    class="nutrient-item-list" > <div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1008">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1008">
+  Calories (kcal)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1008"> <select class="select custom-select" id="id_threshold_1008" name="threshold_1008"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1008" min="0" name="1008" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1003">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1003">
+  Protein (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1003"> <select class="select custom-select" id="id_threshold_1003" name="threshold_1003"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1003" min="0" name="1003" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1004">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1004">
+  Total Fat (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1004"> <select class="select custom-select" id="id_threshold_1004" name="threshold_1004"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1004" min="0" name="1004" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1005">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1005">
+  Total Carbohydrate (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1005"> <select class="select custom-select" id="id_threshold_1005" name="threshold_1005"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1005" min="0" name="1005" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1079">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1079">
+  Dietary Fiber (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1079"> <select class="select custom-select" id="id_threshold_1079" name="threshold_1079"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1079" min="0" name="1079" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1082">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1082">
+  Soluble Fiber (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1082"> <select class="select custom-select" id="id_threshold_1082" name="threshold_1082"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1082" min="0" name="1082" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1084">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1084">
+  Insoluble Fiber (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1084"> <select class="select custom-select" id="id_threshold_1084" name="threshold_1084"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1084" min="0" name="1084" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1063">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1063">
+  Total Sugars (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1063"> <select class="select custom-select" id="id_threshold_1063" name="threshold_1063"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1063" min="0" name="1063" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1235">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1235">
+  Added Sugars (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1235"> <select class="select custom-select" id="id_threshold_1235" name="threshold_1235"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1235" min="0" name="1235" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1086">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1086">
+  Sugar Alcohol (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1086"> <select class="select custom-select" id="id_threshold_1086" name="threshold_1086"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1086" min="0" name="1086" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1258">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1258">
+  Saturated Fat (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1258"> <select class="select custom-select" id="id_threshold_1258" name="threshold_1258"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1258" min="0" name="1258" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1257">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1257">
+  Trans Fat (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1257"> <select class="select custom-select" id="id_threshold_1257" name="threshold_1257"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1257" min="0" name="1257" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1293">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1293">
+  Polyunsaturated Fat (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1293"> <select class="select custom-select" id="id_threshold_1293" name="threshold_1293"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1293" min="0" name="1293" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1292">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1292">
+  Monounsaturated Fat (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1292"> <select class="select custom-select" id="id_threshold_1292" name="threshold_1292"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1292" min="0" name="1292" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1253">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1253">
+  Cholesterol (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1253"> <select class="select custom-select" id="id_threshold_1253" name="threshold_1253"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1253" min="0" name="1253" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1272">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1272">
+  Omega-3 (DHA) (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1272"> <select class="select custom-select" id="id_threshold_1272" name="threshold_1272"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1272" min="0" name="1272" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1278">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1278">
+  Omega-3 (EPA) (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1278"> <select class="select custom-select" id="id_threshold_1278" name="threshold_1278"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1278" min="0" name="1278" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1280">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1280">
+  Omega-3 (DPA) (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1280"> <select class="select custom-select" id="id_threshold_1280" name="threshold_1280"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1280" min="0" name="1280" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1404">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1404">
+  Omega-3 (ALA) (g)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1404"> <select class="select custom-select" id="id_threshold_1404" name="threshold_1404"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1404" min="0" name="1404" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1093">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1093">
+  Sodium (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1093"> <select class="select custom-select" id="id_threshold_1093" name="threshold_1093"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1093" min="0" name="1093" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1099">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1099">
+  Fluoride (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1099"> <select class="select custom-select" id="id_threshold_1099" name="threshold_1099"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1099" min="0" name="1099" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1114">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1114">
+  Vitamin D (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1114"> <select class="select custom-select" id="id_threshold_1114" name="threshold_1114"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1114" min="0" name="1114" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1087">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1087">
+  Calcium (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1087"> <select class="select custom-select" id="id_threshold_1087" name="threshold_1087"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1087" min="0" name="1087" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1089">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1089">
+  Iron (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1089"> <select class="select custom-select" id="id_threshold_1089" name="threshold_1089"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1089" min="0" name="1089" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1092">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1092">
+  Potassium (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1092"> <select class="select custom-select" id="id_threshold_1092" name="threshold_1092"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1092" min="0" name="1092" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1106">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1106">
+  Vitamin A (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1106"> <select class="select custom-select" id="id_threshold_1106" name="threshold_1106"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1106" min="0" name="1106" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1162">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1162">
+  Vitamin C (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1162"> <select class="select custom-select" id="id_threshold_1162" name="threshold_1162"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1162" min="0" name="1162" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1109">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1109">
+  Vitamin E (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1109"> <select class="select custom-select" id="id_threshold_1109" name="threshold_1109"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1109" min="0" name="1109" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1165">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1165">
+  Thiamin (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1165"> <select class="select custom-select" id="id_threshold_1165" name="threshold_1165"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1165" min="0" name="1165" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1166">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1166">
+  Riboflavin (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1166"> <select class="select custom-select" id="id_threshold_1166" name="threshold_1166"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1166" min="0" name="1166" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1167">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1167">
+  Niacin (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1167"> <select class="select custom-select" id="id_threshold_1167" name="threshold_1167"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1167" min="0" name="1167" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1175">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1175">
+  Vitamin B6 (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1175"> <select class="select custom-select" id="id_threshold_1175" name="threshold_1175"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1175" min="0" name="1175" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1177">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1177">
+  Folate DFE (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1177"> <select class="select custom-select" id="id_threshold_1177" name="threshold_1177"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1177" min="0" name="1177" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1178">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1178">
+  Vitamin B12 (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1178"> <select class="select custom-select" id="id_threshold_1178" name="threshold_1178"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1178" min="0" name="1178" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1170">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1170">
+  Pantothenic Acid (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1170"> <select class="select custom-select" id="id_threshold_1170" name="threshold_1170"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1170" min="0" name="1170" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1091">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1091">
+  Phosphorus (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1091"> <select class="select custom-select" id="id_threshold_1091" name="threshold_1091"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1091" min="0" name="1091" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1100">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1100">
+  Iodine (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1100"> <select class="select custom-select" id="id_threshold_1100" name="threshold_1100"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1100" min="0" name="1100" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1090">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1090">
+  Magnesium (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1090"> <select class="select custom-select" id="id_threshold_1090" name="threshold_1090"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1090" min="0" name="1090" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1095">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1095">
+  Zinc (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1095"> <select class="select custom-select" id="id_threshold_1095" name="threshold_1095"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1095" min="0" name="1095" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1103">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1103">
+  Selenium (mcg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1103"> <select class="select custom-select" id="id_threshold_1103" name="threshold_1103"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1103" min="0" name="1103" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1098">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1098">
+  Copper (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1098"> <select class="select custom-select" id="id_threshold_1098" name="threshold_1098"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1098" min="0" name="1098" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1101">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1101">
+  Manganese (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1101"> <select class="select custom-select" id="id_threshold_1101" name="threshold_1101"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1101" min="0" name="1101" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+<div
+     > <div class="form-group row mb-1 mx-auto" id="div_id_1180">
+ <label class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0" for="id_1180">
+  Choline (mg)
+ </label>
+ <div class="col-lg-1 mb-1 pl-0" id="div_id_threshold_1180"> <select class="select custom-select" id="id_threshold_1180" name="threshold_1180"> <option selected="" value=""> </option> <option value="1">
+    &lt;=
+   </option> <option value="2">
+    =
+   </option> <option value="3">
+    &gt;=
+   </option> </select>
+ </div>
+ <div class="col-lg-5 mb-1 pl-0"> <input class="numberinput form-control" id="id_1180" min="0" name="1180" step="any" type="number"/>
+ </div>
+</div>
+
+</div>
+
+</div>
+<div class="form-group row mx-auto"> <div class="aab col-lg-3 text-lg-right font-weight-bold pl-0"></div> <div class="col-lg-6 pl-0 threshold-value"> <input type="submit"
+    name="save"
+    value="Save Goals"
+
+        class="btn btn-primary"
+        id="submit-id-save"
+
+     onclick="unhideSubmitSpinner()"
+    />
+<a class="btn btn-light" href="/">Cancel</a><div id="submit_spinner" class="spinner-border spinner-border-sm text-primary ml-1 d-none"role="status"><span class="sr-only">Loading...</span></div> </div>
+</div> </form>

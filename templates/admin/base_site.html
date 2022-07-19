@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+
+{% load i18n %}
+
+{% block extrahead %}
+  {% load static %}
+  <link rel="shortcut icon" href="{% static 'nutrition_tracker/img/favicon-32x32.png'  %}" />
+{% endblock %}
+
+{% block title %}{% blocktranslate %}{{ SITE_NAME }} - {{ SITE_TAGLINE }}{% endblocktranslate %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{% blocktranslate %}{{ SITE_NAME}} Admin Console{% endblocktranslate %}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

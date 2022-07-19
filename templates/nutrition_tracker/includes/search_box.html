@@ -1,0 +1,16 @@
+{% load i18n %}
+{% load utils %}
+
+<div class="{{ wrapper_class }}">
+  <form class="form-inline {{ form_class }}" method="get" action="{% url buttonurl %}">
+    <div class="input-group input-group-sm">
+      <div class="input-group-prepend">
+	<button class="btn btn-outline-success" type="submit">{{ buttontext }}</button>
+      </div>
+      <input class="form-control {{ inner_class }}" type="text" placeholder="{{ placeholdertext }}" name="q" value="{% if 'q' in request.GET %}{{ request.GET.q }}{% endif %}" aria-label="Search" autocomplete="off">
+      <span class="barcode-scan barcode-scan-search d-none">
+	<a href="#" class="btn btn-sm btn-online-success" role="button" aria-pressed="true" onclick="readBarcode(this);"><i class="bi bi-upc-scan"></i></a>
+      </span>
+    </div>
+  </form>
+</div>

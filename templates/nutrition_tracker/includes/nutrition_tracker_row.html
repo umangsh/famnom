@@ -1,0 +1,21 @@
+{% load static %}
+{% load utils %}
+
+{% get_nutrient_amount nutrient_id type as quantity %}
+<div class="row justify-content-between font-size-14 nutrient nutrient-{{ nutrient_id }}" data-nutrient="{{ nutrient_id }}">
+  <div class="col-lg-4 text-lg-right nutrient-name pr-0">
+    <a class="text-reset" href="{% url URL_NUTRIENT nutrient_id %}">{{ nutrient_id|display_nutrient_name }}</a>
+  </div>
+  {% get_threshold_value luser_preference as threshold_value %}
+  {% widthratio quantity|default_if_none:0 threshold_value 100 as percent %}
+  <div class="col-lg-8 font-size-12">
+    <div class="row justify-content-between align-items-center mx-auto">
+      <div class="mr-auto">
+	<span class="nutrient-quantity">{{ quantity|default_if_none:0|floatformat:FLOATFORMAT_PRECISION }}</span> / {{ threshold_value|floatformat:FLOATFORMAT_PRECISION }}{{ nutrient_id|display_nutrient_unit }}</div>
+      <div><span class="nutrient-dv">{{ percent }}</span>&percnt;</div>
+    </div>
+    <div class="progress md-progress">
+      <div class="nutrient-progress {% if nutrient_id in RED_NUTRIENT_IDS %}bg-danger{% elif nutrient_id in YELLOW_NUTRIENT_IDS %}bg-warning{% elif nutrient_id in GREEN_NUTRIENT_IDS %}bg-success{% elif nutrient_id in BLUE_NUTRIENT_IDS %}{% else %}bg-info{% endif %} progress-bar" role="progressbar" style="width: {{ percent }}%" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+  </div>
+</div>

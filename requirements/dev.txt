@@ -1,0 +1,9 @@
+# Only dev-specific requirements
+-r base.txt
+autopep8>=1.6.0
+bpython>=0.22.1
+chromedriver==2.24.1
+cssutils>=2.3.0
+httpie>=3.0.2
+lxml>=4.7.1
+selenium>=3.141.0

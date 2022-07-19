@@ -1,0 +1,37 @@
+{% load static %}
+
+{% if item_lfood %}
+<li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 item-height-50">
+  <div class="mr-auto w-75">
+    <a class="text-reset" href="{% url URL_DETAIL_INGREDIENT item_lfood.external_id %}">
+      <div class="font-weight-normal">{{ item_lfood.display_name }}</div>
+      <small class="text-muted">{{ item_lfood.display_brand_details }}</small>
+    </a>
+  </div>
+  {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=item_lfood logurl=URL_LOG_INGREDIENT logtext=TEXT_LOG_FOOD %}
+</li>
+{% endif %}
+
+{% if item_lrecipe %}
+<li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 item-height-50">
+  <div class="mr-auto w-75">
+    <a class="text-reset" href="{% url URL_DETAIL_RECIPE item_lrecipe.external_id %}">
+      <div class="font-weight-normal">{{ item_lrecipe.name }}</div>
+      <small class="text-muted">{{ item_lrecipe.display_date }}</small>
+    </a>
+  </div>
+  {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=item_lrecipe logurl=URL_LOG_RECIPE logtext=TEXT_LOG_RECIPE %}
+</li>
+{% endif %}
+
+{% if item_cfood %}
+<li class="list-group-item d-flex justify-content-between align-items-center px-0 py-2 item-height-50">
+  <div class="mr-auto w-75">
+    <a class="text-reset" href="{% url URL_DETAIL_FOOD item_cfood.external_id %}">
+      <div class="font-weight-normal">{{ item_cfood.display_name }}</div>
+      <small class="text-muted">{{ item_cfood.display_brand_details }}</small>
+    </a>
+  </div>
+  {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=item_cfood logurl=URL_LOG_FOOD logtext=TEXT_LOG_FOOD %}
+</li>
+{% endif %}

@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load utils %}
+
+{% if page_obj.paginator.num_pages > 1 %}
+<div class="d-flex justify-content-center pagination mb-4">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?{% url_replace page=1 %}">{% translate "&laquo; first" %}</a>
+    <a href="?{% url_replace page=page_obj.previous_page_number %}">{% translate "previous" %}</a>
+    {% endif %}
+
+    <span class="current">
+      {% translate "Page " %}{{ page_obj.number }}{% translate " of " %}{{ page_obj.paginator.num_pages }}
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?{% url_replace page=page_obj.next_page_number %}">{% translate "next" %}</a>
+    <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{% translate "last &raquo;" %}</a>
+    {% endif %}
+  </span>
+</div>
+{% endif %}

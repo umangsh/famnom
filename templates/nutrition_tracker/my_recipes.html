@@ -1,0 +1,33 @@
+{% extends 'nutrition_tracker/my_kitchen_base.html' %}
+
+{% load i18n %}
+{% load utils %}
+
+{% block head_title %}{% translate "My Recipes" %}{% endblock %}
+
+{% block kitchen_content %}
+{% translate "My Recipes" as header %}
+{% include 'nutrition_tracker/includes/kitchen_prompt.html' with header=header primaryurl=URL_CREATE_RECIPE primarytext=TEXT_CREATE_RECIPE secondaryurl1=URL_CREATE_FOOD secondarytext1=TEXT_CREATE_FOOD secondaryurl2=URL_CREATE_MEAL secondarytext2=TEXT_CREATE_MEAL %}
+
+{% translate "your recipes" as placeholdertext %}
+{% translate "Search" as buttontext %}
+{% include 'nutrition_tracker/includes/search_box.html' with placeholdertext=placeholdertext buttonurl=URL_MY_RECIPES buttontext=buttontext wrapper_class='justify-content-center row mb-4' %}
+
+{% if lrecipes %}
+<ul class="item-list-main list-group list-group-flush mb-3">
+  {% for lrecipe in lrecipes %}
+  {% display_recipe_date as subtext %}
+  {% include 'nutrition_tracker/includes/kitchen_items.html' with kitchenobject=lrecipe detailurl=URL_DETAIL_RECIPE logurl=URL_LOG_RECIPE logtext=TEXT_LOG_RECIPE editurl=URL_EDIT_RECIPE edittext=TEXT_EDIT_RECIPE deleteurl=URL_DELETE_RECIPE deletetext=TEXT_DELETE_RECIPE maintext=lrecipe.name subtext=lrecipe.display_date %}
+  {% endfor %}
+</ul>
+
+{% include 'nutrition_tracker/includes/paginator.html' %}
+
+{% else %}
+{% translate "Don't see any saved items?" as prompt %}
+{% translate "Add a new recipe!" as subprompt %}
+<div class="mt-4">
+  {% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_CREATE_RECIPE buttontext=TEXT_CREATE_RECIPE %}
+</div>
+{% endif %}
+{% endblock %}

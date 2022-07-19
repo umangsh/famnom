@@ -1,0 +1,62 @@
+{% load i18n %}
+{% load utils %}
+
+{% display_brand_field 'brand_owner' as brand_owner %}
+{% if brand_owner %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "Brand owner" %}
+  </div>
+  <div class="{{ value_class }}">
+    {{ brand_owner }}
+  </div>
+</div>
+{% endif %}
+
+{% display_brand_field 'brand_name' as brand_name %}
+{% if brand_name %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "Brand name" %}
+  </div>
+  <div class="{{ value_class }}">
+    {{ brand_name }}
+  </div>
+</div>
+{% endif %}
+
+{% display_brand_field 'subbrand_name' as subbrand_name %}
+{% if subbrand_name %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "Subbrand name" %}
+  </div>
+  <div class="{{ value_class }}">
+    {{ subbrand_name }}
+  </div>
+</div>
+{% endif %}
+
+{% display_brand_field 'gtin_upc' as gtin_upc %}
+{% if gtin_upc %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "GTIN/UPC" %}
+  </div>
+  <div class="{{ value_class }}">
+    {{ gtin_upc }}
+  </div>
+</div>
+{% endif %}
+
+{% display_brand_field 'ingredients' as ingredients %}
+{% if ingredients %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "Ingredients" %}
+  </div>
+  <div class="{{ value_class }}">
+    <span class="font-size-12 d-inline-block">{{ ingredients }}</span>
+  </div>
+</div>
+{% endif %}

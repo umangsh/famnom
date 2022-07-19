@@ -1,0 +1,30 @@
+<form  class="form-horizontal" method="post" > <div id="div_id_first_name" class="form-group row mb-1 mx-auto"> <label for="id_first_name" class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0">
+                First Name
+            </label> <div class="col-lg-6 pl-0"> <input type="text" name="first_name" value="Test" maxlength="150" class="textinput textInput form-control" id="id_first_name"> </div> </div> <div id="div_id_last_name" class="form-group row mb-1 mx-auto"> <label for="id_last_name" class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0">
+                Last Name
+            </label> <div class="col-lg-6 pl-0"> <input type="text" name="last_name" value="Gupta" maxlength="150" class="textinput textInput form-control" id="id_last_name"> </div> </div> <div id="div_id_email" class="form-group row mb-1 mx-auto"> <label for="id_email" class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0 requiredField">
+                Email Address<span class="asteriskField">*</span> </label> <div class="col-lg-6 pl-0"> <input type="email" name="email" value="user@famnom.com" class="emailinput form-control" required id="id_email"> </div> </div> <div class="mb-1 offset-lg-3"><a class="btn btn-outline-primary btn-sm" href="/accounts/password/change/">Change Password</a></div><div id="div_id_date_of_birth" class="form-group row mb-1 mx-auto"> <label for="id_date_of_birth" class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0">
+                Date of Birth
+            </label> <div class="col-lg-6 pl-0"> <input type="text" name="date_of_birth" value="1988-02-02" class="dateinput form-control" id="id_date_of_birth"> </div> </div> <div class="form-group row mx-auto"> <div class="offset-lg-3 col-lg-6 pl-0"> <div id="div_id_is_pregnant" class="custom-control custom-checkbox"> <input type="checkbox" name="is_pregnant" class="checkboxinput custom-control-input" id="id_is_pregnant"> <label for="id_is_pregnant" class="custom-control-label">
+                    Pregnant
+                </label> </div> </div> </div> <div id="div_id_family_email" class="form-group row mb-1 mx-auto"> <label for="id_family_email" class="col-form-label col-lg-3 text-lg-right font-weight-bold pl-0">
+                Add to Family (by email)
+            </label> <div class="col-lg-6 pl-0"> <input type="email" name="family_email" class="emailinput form-control" id="id_family_email"> </div> </div> <div
+    class="form-group row mx-auto mb-2" > <div
+    class="col-lg-3 pl-0" > </div>
+<div
+    class="col-lg-6 pl-0" > <span></span>
+</div>
+
+</div>
+<div class="form-group row mx-auto"> <div class="aab col-lg-3 text-lg-right font-weight-bold pl-0"></div> <div class="col-lg-6 pl-0"> <input type="submit"
+    name="save"
+    value="Save Profile"
+
+        class="btn btn-primary"
+        id="submit-id-save"
+
+     onclick="unhideSubmitSpinner()"
+    />
+<a class="btn btn-light" href="/my_profile/">Cancel</a><div id="submit_spinner" class="spinner-border spinner-border-sm text-primary ml-1 d-none"role="status"><span class="sr-only">Loading...</span></div> </div>
+</div> </form>

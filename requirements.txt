@@ -1,0 +1,2 @@
+# Mirrors prod, required by Heroku
+-r requirements/prod.txt

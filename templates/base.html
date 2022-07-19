@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load i18n %}
+    {% load static %}
+    {% load utils %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--- Reset CSS -->
+    <link rel="stylesheet"
+	  href="{% static 'nutrition_tracker/css/reset.css' %}">
+
+    <!--- Normalize CSS -->
+    <link rel="stylesheet"
+	  href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	  integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	  crossorigin="anonymous">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Add additional CSS in static file -->
+    <link rel="stylesheet" href="{% static 'nutrition_tracker/css/styles.css' %}">
+
+    <!-- jQuery UI CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+
+    <!-- Select2 CSS -->
+    <link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.css" />
+    <link rel="stylesheet"
+	  href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css">
+    {% block extra_css %}{% endblock %}
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+	    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	    crossorigin="anonymous"></script>
+
+    <!-- jQuery UI -->
+    <!-- must be included before bootstrap for some styles to work -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+	    integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+	    crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	    crossorigin="anonymous"></script>
+
+
+    <!-- jQuery Cookie -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <!-- Select2 -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+
+    <!-- bootstrap-autocomplete -->
+    <script src="https://cdn.jsdelivr.net/gh/xcash/bootstrap-autocomplete@v2.3.7/dist/latest/bootstrap-autocomplete.min.js"></script>
+
+    <script>var exports = {"__esModule": true};</script>
+    <title>
+      {% block head_title %}{% blocktranslate %}{{ SITE_TAGLINE }}{% endblocktranslate %}{% endblock %} - {{ SITE_NAME }}
+    </title>
+
+    <link rel="apple-touch-icon" href="{% static 'nutrition_tracker/img/apple-touch-icon.png' %}" sizes="180x180">
+    <link rel="icon" type="image/png" href="{% static 'nutrition_tracker/img/favicon-16x16.png' %}" sizes="16x16">
+    <link rel="icon" type="image/png" href="{% static 'nutrition_tracker/img/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="icon" type="image/png" href="{% static 'nutrition_tracker/img/android-chrome-192x192.png' %}" sizes="192x192">
+    <link rel="icon" type="image/png" href="{% static 'nutrition_tracker/img/android-chrome-512x512.png' %}" sizes="512x512">
+    {% block extra_head %}{% endblock %}
+    <script type="text/javascript">
+      (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
+		     ;r.type="text/javascript"
+		     ;r.integrity="sha384-tzcaaCH5+KXD4sGaDozev6oElQhsVfbJvdi3//c2YvbY02LrNlbpGdt3Wq4rWonS"
+		     ;r.crossOrigin="anonymous";r.async=true
+		     ;r.src="https://cdn.amplitude.com/libs/amplitude-8.5.0-min.gz.js"
+		     ;r.onload=function(){if(!e.amplitude.runQueuedFunctions){
+			 console.log("[Amplitude] Error: could not load SDK")}}
+		     ;var i=t.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)
+		     ;function s(e,t){e.prototype[t]=function(){
+			 this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+		     var o=function(){this._q=[];return this}
+		     ;var a=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove"]
+		     ;for(var c=0;c<a.length;c++){s(o,a[c])}n.Identify=o;var u=function(){this._q=[]
+											  ;return this}
+		     ;var l=["setProductId","setQuantity","setPrice","setRevenueType","setEventProperties"]
+		     ;for(var p=0;p<l.length;p++){s(u,l[p])}n.Revenue=u
+		     ;var d=["init","logEvent","logRevenue","setUserId","setUserProperties","setOptOut","setVersionName","setDomain","setDeviceId","enableTracking","setGlobalUserProperties","identify","clearUserProperties","setGroup","logRevenueV2","regenerateDeviceId","groupIdentify","onInit","logEventWithTimestamp","logEventWithGroups","setSessionId","resetSessionId"]
+		     ;function v(e){function t(t){e[t]=function(){
+			 e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
+				    for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
+					e=(!e||e.length===0?"$default_instance":e).toLowerCase()
+					;if(!Object.prototype.hasOwnProperty.call(n._iq,e)){n._iq[e]={_q:[]};v(n._iq[e])}
+					return n._iq[e]};e.amplitude=n})(window,document);
+
+      amplitude.getInstance().init('{% settings_value "AMPLITUDE_API_KEY" %}');
+    </script>
+  </head>
+  <body>
+    <div class="modal" id="barcodeModal" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+            <h5 class="modal-title loading" id="modalLongTitle">{% translate "Finding Barcode" %}</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    <video id="barcode-stream"></video>
+	  </div>
+	</div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      {% block headernav %}
+      <nav class="navbar navbar-expand-lg navbar-light pr-0 pl-1">
+	<a class="navbar-brand sitename" href="{% url URL_HOME %}">
+	  <img class="d-inline-block align-top" src="{% static 'nutrition_tracker/img/icon.png' %}" alt="" width="24" height="24" >
+	  {{ SITE_NAME|upper }}
+	</a>
+
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeaderAltMarkup" aria-controls="navbarHeaderAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+	  <span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarHeaderAltMarkup">
+	  <div class="navbar-nav">
+	    {% if user.is_authenticated %}
+	    <a class="nav-item nav-link {% if request.path|highlight_index %}active{% endif %}" href="{% url URL_HOME %}">{% translate "History" %}</a>
+	    <a class="nav-item nav-link {% if request.path|highlight_mealplan %}active{% endif %}" href="{% url URL_MY_MEALPLAN %}">{% translate "MealPlanner" %}</a>
+	    <a class="nav-item nav-link {% if request.path|highlight_kitchen %}active{% endif %}" href="{% url URL_MY_FOODS %}">{% translate "MyKitchen" %}</a>
+	    {% endif %}
+	  </div>
+
+	  {% translate "food database" as placeholdertext %}
+	  {% translate "Search" as buttontext %}
+	  {% include 'nutrition_tracker/includes/search_box.html' with placeholdertext=placeholdertext buttonurl=URL_SEARCH buttontext=buttontext wrapper_class='navbar-nav ml-auto' form_class='nav-item nav-link' inner_class='w-search autocomplete' %}
+
+	  <div class="nav ml-auto">
+	    {% if user.is_authenticated %}
+            <a class="nav-item btn btn-sm btn-outline-primary" href="{% url URL_ACCOUNT_LOGOUT %}">{{ TEXT_ACCOUNT_LOGOUT }}</a>
+	    {% else %}
+	    <a class="nav-item btn btn-sm btn-outline-primary mr-2" href="{% url URL_ACCOUNT_LOGIN %}">{{ TEXT_ACCOUNT_LOGIN }}</a>
+	    <a class="nav-item btn btn-sm btn-outline-primary" href="{% url URL_ACCOUNT_SIGNUP %}">{{ TEXT_ACCOUNT_SIGNUP }}</a>
+            </a>
+	    {% endif %}
+	  </div>
+	</div>
+      </nav>
+      {% endblock %}
+
+      <div class="row">
+	<div class="col">
+	  {% block subnav %}{% endblock %}
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col">
+	  {% block messageinfo %}
+	  {% if messages %}
+	  {% for message in messages %}
+	  <div class="alert mt-3 mb-0 {{ message.tags}} alert-dismissable" role="alert">
+	    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	    {{ message }}
+	  </div>
+	  {% endfor %}
+	  {% endif %}
+	  {% endblock %}
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="col">
+	  {% block content %}
+	  {% block common_content %}
+	  {% endblock %}
+	  {% if user.is_authenticated %}
+	  {% block authenticated_content %}
+	  {% endblock %}
+	  {% else %}
+	  {% block unauthenticated_content %}
+	  <div class="row justify-content-center">
+	    <div class="col-lg-8 pt-3">
+	      <h1 class="display-4">{% blocktranslate %}Welcome to {{ SITE_NAME }}!{% endblocktranslate %}</h1>
+	      <p class="lead">{% blocktranslate %}{{ SITE_TAGLINE }}{% endblocktranslate %}</p>
+	      <p>{% translate "Set health goals, track your and your family's nutrition, manage recipes and meals and more!" %}</p>
+	      <p class="lead">
+		<a class="nav-item btn btn-lg btn-primary" href="{% url URL_ACCOUNT_SIGNUP %}">
+		  {{ TEXT_ACCOUNT_SIGNUP }}
+		</a>
+	      <p>
+	      <p>{% translate "Already have an account?" %}
+		<a href="{% url URL_ACCOUNT_LOGIN %}">
+		  {{ TEXT_ACCOUNT_LOGIN }}
+		</a>
+	      </p>
+	    </div>
+	  </div>
+	  {% endblock %}
+	  {% endif %}
+	  {% endblock %}
+	</div>
+      </div>
+    </div>
+
+    {% block footer %}
+    <footer class="footer mt-5">
+      <div class="container-fluid">
+	    <div class="row">
+	      <div class="col">
+		    <div class="row justify-content-center mt-3 mb-2">
+			  <a href="{% url 'privacy_policy' %}"><small class="text-muted mr-3">Privacy Policy</small></a>
+ 			  <a href="{% url 'cookie_policy' %}"><small class="text-muted mr-3">Cookie Policy</small></a>
+			  <a href="{% url 'terms_of_use' %}"><small class="text-muted mr-3">Terms of Use</small></a>
+			</div>
+		    <div class="row justify-content-center mb-3">
+			  <small class="text-muted">&copy; {% now "Y" %} {% blocktranslate %}{{ SITE_NAME }} - All Rights Reserved{% endblocktranslate %}</small>
+            </div>
+	      </div>
+	    </div>
+      </div>
+    </footer>
+    {% endblock %}
+
+    {% block extra_body %}{% endblock %}
+    <script type="text/javascript">
+      $(document).ready(function() {
+	amplitude.getInstance().logEvent('{{ request.path_info }}');
+      });
+    </script>
+    <script src="{% static 'nutrition_tracker/js/init_objects.js' %}"></script>
+    <script type="text/javascript" src="{% static 'nutrition_tracker/js/data_loader.js' %}"></script>
+    <script type="text/javascript" src="{% static 'nutrition_tracker/js/nutrition_label.js' %}"></script>
+    <script src="{% static 'nutrition_tracker/js/base.js' %}"></script>
+    <script src="{% static 'nutrition_tracker/js/uri.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{% load utils %}
+
+<div class="jumbotron py-4 d-flex justify-content-between mb-3">
+  <div class="ml-2 mr-auto w-75">
+    <div class="lead">{{ prompt }}</div>
+    <div class="text-muted">{{ subprompt }}</div>
+  </div>
+  <div class="d-flex align-items-center"><a class="btn btn-primary btn-sm" href="{% url buttonurl %}">{{ buttontext }}</a></div>
+</div>

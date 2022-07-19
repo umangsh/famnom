@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load utils %}
+
+{% if lfood and lfood.category_id %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "Category" %}
+  </div>
+  <div class="{{ value_class }}">
+    {{ lfood.category_id|display_category_name }}
+  </div>
+</div>
+{% elif cfood and cfood.food_category_id %}
+<div class="{{ wrapper_class }} pt-2">
+  <div class="{{ label_class }}">
+    {% translate "Category" %}
+  </div>
+  <div class="{{ value_class }}">
+    {{ cfood.food_category_id|display_category_name }}
+  </div>
+</div>
+{% endif %}

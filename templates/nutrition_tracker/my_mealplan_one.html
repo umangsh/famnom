@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block head_title %}{% translate "My Mealplan" %}{% endblock %}
+
+{% block authenticated_content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8 pt-3">
+    {% url URL_NUTRITION as nutrition_url %}
+    <p class="lead mb-0">{% blocktranslate %}Plan daily meals based on your taste and <a href="{{ nutrition_url }}" class="text-decoration-none">nutrition preferences</a>.{% endblocktranslate %}</p>
+    {% url URL_MY_FOODS as kitchen_url %}
+    {% url URL_SEARCH as search_url %}
+    {% url URL_PROFILE as profile_url %}
+    <small>{% blocktranslate %}Check that items in your <a href="{{ kitchen_url }}" class="text-decoration-none">Kitchen</a> are up-to-date.</small><br>
+    <small>Save items from Food Database (for e.g. <a href="{{ search_url }}?q=Milk" class="text-decoration-none">Milk</a>) to setup your Kitchen, or add family members in your <a href="{{ profile_url }}" class="text-decoration-none">profile</a> to share foods and recipes in your Kitchen.{% endblocktranslate %}</small>
+
+    {% crispy form form.helper %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'nutrition_tracker/js/mealplan.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends lfood|yesno:'nutrition_tracker/my_kitchen_base.html,base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block head_title %}{% display_food_name %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="row justify-content-between align-items-center mx-auto">
+      <div class="mr-auto p-2 w-75">
+	<p class="display-4 mb-0">{% display_food_name %}</p>
+      </div>
+      <div class="form-action-row d-flex p-2">
+	{% if lfood %}
+	{% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=lfood logurl=URL_LOG_INGREDIENT logtext=TEXT_LOG_FOOD editurl=URL_EDIT_FOOD edittext=TEXT_EDIT_FOOD deleteurl=URL_DELETE_FOOD deletetext=TEXT_DELETE_FOOD %}
+	{% else %}
+	<div class="d-flex">
+	  {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=cfood logurl=URL_LOG_FOOD logtext=TEXT_LOG_FOOD %}
+	  {% if user.is_authenticated %}
+	  <form id="addToKitchen">
+	    {% csrf_token %}
+	    <input type="hidden" name="id" value="{{ cfood.external_id }}">
+	    <button type="submit" class="btn btn-sm btn-outline-secondary">{% translate "Add to MyKitchen" %}</button>
+	  </form>
+	  {% endif %}
+	</div>
+	{% endif %}
+      </div>
+    </div>
+
+    <div class="row justify-content-between m-auto">
+      <div class="col-lg-6 pt-3 pl-1">
+	{% with wrapper_class='row mb-1 justify-content-between mx-auto' label_class='col-lg-4 text-lg-right font-weight-bold pl-0' value_class='col-lg-8 pl-0' %}
+	{% include 'nutrition_tracker/includes/portion_details.html' with wrapper_class=wrapper_class label_class=label_class value_class=value_class %}
+	{% include 'nutrition_tracker/includes/food_details.html' with wrapper_class=wrapper_class label_class=label_class value_class=value_class %}
+	{% include 'nutrition_tracker/includes/branded_food_details.html' with wrapper_class=wrapper_class label_class=label_class value_class=value_class %}
+	{% endwith %}
+      </div>
+
+      <div class="col-lg-6 pt-3 d-flex pl-1">
+	{% include 'nutrition_tracker/includes/nutrition_label.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

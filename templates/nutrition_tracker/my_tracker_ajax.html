@@ -1,0 +1,91 @@
+{% load static %}
+{% load utils %}
+
+<div class="col-lg-12 mt-3">
+  <canvas id="tracker-chart"></canvas>
+</div>
+
+<script type="text/javascript">
+  const ctx = document.getElementById('tracker-chart').getContext('2d');
+  let start = new Date();
+  let end = new Date();
+
+  start.setDate(start.getDate() - {{ days_window_size }} + 1);
+  const trackerChart = new Chart(ctx, {
+      data: {
+          datasets: [{
+              type: 'bar',
+              data: {{ nutrients_per_day|safe }},
+              order: 2,
+              backgroundColor: 'rgba(22, 79, 35, 0.7)',
+              borderColor: 'rgba(22, 79, 35, 1)',
+              borderWidth: 1,
+          }, {
+              type: 'line',
+              data: {{ nutrient_thresholds|safe }},
+              order: 1,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 2,
+          }]
+      },
+      options: {
+          responsive: true,
+	  onHover: (event, activeElements) => {
+	      event.native.target.style.cursor = activeElements[0] ? 'pointer' : 'default';
+	  },
+          plugins: {
+              legend: {
+                  display: false
+              },
+              tooltip: {
+                  callbacks: {
+                      label: function(context) {
+                          if (context.parsed.y !== null) {
+                              return parseFloat(context.parsed.y.toFixed(2)) + '{{ lnutrient.id_|display_nutrient_unit }}';
+                          }
+                      }
+                  }
+              }
+          },
+          scales: {
+              x: {
+                  min: start,
+                  max: end,
+                  type: 'time',
+                  time: {
+                      tooltipFormat: 'MMM d',
+                      unit: 'day'
+                  }
+              },
+              y: {
+                  beginAtZero: true,
+                  ticks: {
+                      callback: function(value, index, values) {
+                          return value + '{{ lnutrient.id_|display_nutrient_unit }}';
+                      }
+                  }
+              }
+          }
+      }
+  });
+
+  document.getElementById('tracker-chart').onclick = function (evt) {
+      const activePoints = trackerChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+      const firstPoint = activePoints[0];
+      const pointDate = trackerChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index]['x'];
+
+      const selectedDate = new Date(pointDate);
+      console.log(selectedDate);
+      const todaysDate = new Date().setHours(0, 0, 0, 0);
+      console.log(todaysDate);
+      const diffDate = selectedDate - todaysDate;
+      console.log(diffDate);
+      const diffDays = Math.round(diffDate / 86400000);
+      console.log(diffDays);
+
+      const uri = new Uri(window.location.origin);
+      uri.addQueryParam('td', diffDays);
+      window.location.href = uri.toString();
+  };
+</script>

@@ -1,0 +1,58 @@
+<form  class="form-horizontal" method="post" >
+<input type="hidden" name="external_id" id="id_external_id">
+<div id="div_id_meal_type" class="form-group row mb-1 mx-auto">
+<label for="id_meal_type" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+Meal<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0">
+<select name="meal_type" class="select custom-select" required id="id_meal_type">
+<option value="">Select meal</option>
+<option value="Suhur">Suhur</option>
+<option value="Breakfast">Breakfast</option>
+<option value="Second Breakfast">Second Breakfast</option>
+<option value="Elevenses">Elevenses</option>
+<option value="Brunch">Brunch</option>
+<option value="Lunch">Lunch</option>
+<option value="Snack">Snack</option>
+<option value="Afternoon Tea">Afternoon Tea</option>
+<option value="Tiffin">Tiffin</option>
+<option value="Dinner">Dinner</option>
+<option value="Supper">Supper</option>
+<option value="Iftar">Iftar</option>
+<option value="Siu Yeh">Siu Yeh</option>
+</select> </div> </div>
+<div id="div_id_meal_date" class="form-group row mb-1 mx-auto">
+<label for="id_meal_date" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+Meal date<span class="asteriskField">*</span> </label>
+<div class="col-lg-8 pl-0">
+<input type="text" name="meal_date" value="{TODAY_DATE}" class="dateinput form-control" required id="id_meal_date">
+</div>
+</div>
+<div id="div_id_serving" class="form-group row mb-1 mx-auto">
+<label for="id_serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+Serving Size<span class="asteriskField">*</span> </label>
+<div class="col-lg-8 pl-0">
+<select name="serving" onchange="updateNutrients();" class="selectwithoptionattrs
+custom-select" id="id_serving">
+<option data-gm-wt="100" data-wt-unit="g" selected value="-1">
+100g
+</option><option data-gm-wt="1" data-wt-unit="g" value="-2">
+1g
+</option><option data-gm-wt="28.3495" data-wt-unit="g" value="-3">
+1oz
+</option>
+</select> </div> </div>
+<div id="div_id_quantity" class="form-group row mb-1 mx-auto">
+<label for="id_quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+Total Servings
+</label>
+<div class="col-lg-8 pl-0">
+<input type="number" name="quantity" min="0" step="any" onchange="updateNutrients();"
+class="numberinput form-control" id="id_quantity">
+</div> </div><input id="id_is_available" name="is_available" type="hidden">
+<div class="form-group row mx-auto"> <div class="aab col-lg-4 text-lg-right font-weight-bold pl-0"></div>
+<div class="col-lg-8 pl-0">
+<input type="submit" name="save" value="Log" class="btn btn-primary"
+id="submit-id-save" onclick="unhideSubmitSpinner()" />
+<a class="btn btn-light" href="/">Cancel</a>
+<div id="submit_spinner" class="spinner-border spinner-border-sm text-primary ml-1 d-none"
+role="status"><span class="sr-only">Loading...</span></div> </div>
+</div> </form>

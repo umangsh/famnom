@@ -1,0 +1,271 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+footer {
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.sitename {
+  font-weight: bold;
+  color: #164f23 !important;
+  letter-spacing: 3px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.blur-background {
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+}
+
+.header-bar {
+  background-color: #f2ffe6;
+}
+
+.sub-header-bar {
+  background-color: #164f23;
+}
+
+.container-fluid {
+  min-height: 100%;
+}
+
+.item-list-main .list-group-item .food-btn {
+  display: none;
+}
+
+.item-list-main .list-group-item:hover > .food-btn {
+  display: block;
+}
+
+.item-list-main .list-group-item .portion-value {
+  display: block;
+}
+
+.item-list-main .list-group-item:hover > .portion-value {
+  display: none;
+}
+
+.item-height-50 {
+  min-height: 50px;
+}
+
+.min-item-height {
+  min-height: 60px;
+}
+
+.modal-body img {
+  width: 100%;
+}
+
+.barcode-scan a.btn {
+  position: absolute;
+  z-index: 1000;
+  top: 0%;
+  right: 0%;
+}
+
+.barcode-scan a.btn.edit-page-barcode {
+  position: absolute;
+  z-index: 1000;
+  top: 10%;
+  right: 6%;
+}
+
+#barcode-stream {
+  width: 100%;
+}
+
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4, end) 1800ms infinite;
+  animation: ellipsis steps(4, end) 1800ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 20px;
+  }
+}
+
+.border-2 {
+  border-width: 2px !important;
+}
+
+.border-6 {
+  border-width: 6px !important;
+}
+
+.border-13 {
+  border-width: 13px !important;
+}
+
+.line-height-1 {
+  line-height: 1 !important;
+}
+
+.font-size-smaller {
+  font-size: smaller;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-15 {
+  font-size: 15px;
+}
+
+.font-size-17 {
+  font-size: 17px;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.flex-basis-0 {
+  flex-basis: 0;
+}
+
+.display-5 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.display-6 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+.w-85 {
+  width: 85%;
+}
+
+.w-search {
+  width: 200px !important;
+}
+
+@media screen and (min-width: 540px) {
+  .w-search {
+    width: 400px !important;
+  }
+}
+
+.asteriskField {
+  display: none;
+}
+
+.md-progress {
+  height: 3px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+/* Nutrition label sizing is complicated.
+   Set width to 310px for all browsers.
+   Overwrite to 355px for chrome, but this matches desktop
+   firefox as well.
+   Overwrite to 315px again for desktop firefox.
+   IMPORTANT: The following three rules should be in sequence.
+*/
+.nutrition-label {
+  font-family: Arial, Helvetica, sans-serif !important;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: flex-start;
+  top: 1rem;
+  min-width: 310px;
+  max-width: 310px;
+  box-sizing: border-box;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (min-resolution: 0.001dpcm) {
+  .selector:not(*:root),
+  .nutrition-label {
+    min-width: 355px;
+    max-width: 355px;
+  }
+}
+
+@-moz-document url-prefix() {
+  .nutrition-label {
+    min-width: 315px;
+    max-width: 315px;
+  }
+}
+/****************************************************/
+
+.nutrition-label .font-weight-bold {
+  font-family: Arial Black, Helvetica, sans-serif !important;
+}
+
+.nutrition-label .nutrient-name {
+  margin-right: 5px;
+}
+
+.nutrition-label .nutrient-1063 .nutrient-name,
+.nutrition-label .nutrient-1079 .nutrient-name,
+.nutrition-label .nutrient-1086 .nutrient-name,
+.nutrition-label .nutrient-1258 .nutrient-name,
+.nutrition-label .nutrient-1257 .nutrient-name,
+.nutrition-label .nutrient-1293 .nutrient-name,
+.nutrition-label .nutrient-1292 .nutrient-name {
+  padding-left: 1.2em;
+}
+
+.nutrition-label .nutrient-1082 .nutrient-name,
+.nutrition-label .nutrient-1084 .nutrient-name,
+.nutrition-label .nutrient-1235 .nutrient-name {
+  padding-left: 2.4em;
+}
+
+.nutrition-label .nutrient-1257 .nutrient-name {
+  font-style: italic;
+}
+
+.nutrition-tracker {
+  align-self: flex-start;
+  top: 1rem;
+}
+
+.nutrition-tracker .nutrient-1003 .nutrient-name,
+.nutrition-tracker .nutrient-1004 .nutrient-name,
+.nutrition-tracker .nutrient-1005 .nutrient-name,
+.nutrition-tracker .nutrient-1008 .nutrient-name,
+.nutrition-tracker .nutrient-1093 .nutrient-name,
+.nutrition-tracker .nutrient-1099 .nutrient-name,
+.nutrition-tracker .nutrient-1253 .nutrient-name {
+  font-weight: bold;
+}

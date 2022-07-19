@@ -1,0 +1,50 @@
+{% load utils %}
+
+{% get_content_type_meal_id as content_type_meal_id %}
+{% get_content_type_ingredient_id as content_type_ingredient_id %}
+{% get_content_type_recipe_id as content_type_recipe_id %}
+<ul class="item-list-main list-group list-group-flush mb-3">
+  {% for lparent_member in lparent.members %}
+  {% with lobject_id=lparent_member.child_id %}
+  <li class="list-group-item px-0 py-2 d-flex justify-content-between align-items-center item-height-50">
+    <div class="mr-auto w-75">
+      {% if lparent_member.child_type_id == content_type_ingredient_id %}
+      {% if lparent_member.parent_type_id == content_type_meal_id %}
+      <a class="text-reset" href="{% url URL_LOG_INGREDIENT lparent_member.child.external_id lparent_member.external_id %}">
+      {% else %}
+      <a class="text-reset" href="{% url URL_DETAIL_INGREDIENT lparent_member.child.external_id lparent_member.external_id %}">
+      {% endif %}
+      <div class="font-weight-normal">{% display_food_name lobject_id %}</div>
+      <small class="text-muted">{% display_brand_details lobject_id %}</small>
+      </a>
+      {% endif %}
+      {% if lparent_member.child_type_id == content_type_recipe_id %}
+      {% if lparent_member.parent_type_id == content_type_meal_id %}
+      <a class="text-reset" href="{% url URL_LOG_RECIPE lparent_member.child.external_id lparent_member.external_id %}">
+      {% else %}
+      <a class="text-reset" href="{% url URL_DETAIL_RECIPE lparent_member.child.external_id lparent_member.external_id %}">
+      {% endif %}
+      <div class="font-weight-normal">{% display_recipe_name lobject_id False %}</div>
+      <small class="text-muted">{% display_recipe_date lobject_id %}</small>
+      </a>
+      {% endif %}
+    </div>
+    {% with portion=lparent_member.portions.0 %}
+    <div class="text-right portion-value">{{ portion|display_portion }}</div>
+    {% endwith %}
+    {% if lparent_member.child_type_id == content_type_ingredient_id %}
+    <form method="post" action="{% url URL_DELETE_FOOD %}" class="food-btn">
+    {% endif %}
+    {% if lparent_member.child_type_id == content_type_recipe_id %}
+    <form method="post" action="{% url URL_DELETE_RECIPE %}" class="food-btn">
+    {% endif %}
+    {% csrf_token %}
+    <input type="hidden" name="id" value="{{ lparent_member.child.external_id }}">
+    <input type="hidden" name="mid" value="{{ lparent_member.external_id }}">
+    <input type="hidden" name="nexturl" value="{{ nexturl }}">
+    <button class="btn btn-sm btn-outline-secondary" type="submit" data-toggle="tooltip" title="{{ TEXT_DELETE }}" onclick="deleteFood(event)"><i class="bi bi-trash"></i></button>
+    </form>
+  </li>
+  {% endwith %}
+  {% endfor %}
+</ul>

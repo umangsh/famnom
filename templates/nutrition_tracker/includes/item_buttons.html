@@ -1,0 +1,18 @@
+{% load static %}
+
+{% if logurl %}
+<a class="btn btn-sm btn-outline-secondary mr-2 food-btn" role="button" href="{% url logurl kitchenobject.external_id %}" data-toggle="tooltip" title="{{ logtext }}"><i class="bi bi-box-arrow-in-right"></i></a>
+{% endif %}
+
+{% if editurl %}
+<a class="btn btn-sm btn-outline-secondary mr-2 food-btn" role="button" href="{% url editurl kitchenobject.external_id %}" data-toggle="tooltip" title="{{ edittext }}"><i class="bi bi-pencil"></i></a>
+{% endif %}
+
+{% if deleteurl %}
+<form method="post" action="{% url deleteurl %}" class="food-btn">
+  {% csrf_token %}
+  <input type="hidden" name="id" value="{{ kitchenobject.external_id }}">
+  <input type="hidden" name="nexturl" value="{{ nexturl }}">
+  <button class="btn btn-sm btn-outline-secondary" type="submit" data-toggle="tooltip" title="{{ deletetext }}" onclick="deleteFood(event)"><i class="bi bi-trash"></i></button>
+</form>
+{% endif %}

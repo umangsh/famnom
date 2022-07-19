@@ -1,0 +1,7 @@
+<div class="col-lg-6 mt-3 px-4">
+  {% include 'nutrition_tracker/includes/items_module.html' with item_cfoods=top_cfoods|slice:"10" %}
+</div>
+
+<div class="col-lg-6 mt-3 px-4">
+  {% include 'nutrition_tracker/includes/items_module.html' with item_cfoods=top_cfoods|slice:"10:20" %}
+</div>

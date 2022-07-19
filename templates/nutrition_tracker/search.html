@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block head_title %}
+{% if 'q' in request.GET and request.GET.q %}
+{{ request.GET.q }}
+{% else %}
+{% translate "Search Food Database" %}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="row mt-4">
+  <div class="col-lg-8 mx-auto">
+    {% if 'q' in request.GET %}
+    <ul class="item-list-main list-group list-group-flush mb-3">
+      {% for search_result in search_results %}
+      {% include 'nutrition_tracker/includes/search_result_row.html' with search_result=search_result %}
+      {% endfor %}
+    </ul>
+
+    {% include 'nutrition_tracker/includes/paginator.html' %}
+
+    {% translate "Can't find what you're looking for?" as prompt %}
+    {% translate "Create and log your own food." as subprompt %}
+    {% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_CREATE_FOOD buttontext=TEXT_CREATE_FOOD %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

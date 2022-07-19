@@ -1,0 +1,4 @@
+# Only prod-specific requirements
+-r base.txt
+django-heroku==0.3.1
+gunicorn

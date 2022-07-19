@@ -1,0 +1,59 @@
+{% load utils %}
+
+<div class="nutrition-tracker position-sticky {{ wrapper_class }}">
+  {% for nutrient_id in TRACKER_NUTRIENT_IDS %}
+  {% if nutrient_preferences %}
+  {% for luser_preference in nutrient_preferences %}
+  {% if luser_preference.food_nutrient_id == nutrient_id %}
+  {% include 'nutrition_tracker/includes/nutrition_tracker_row.html' with type=type luser_preference=luser_preference nutrient_id=luser_preference.food_nutrient_id %}
+  {% endif %}
+  {% endfor %}
+  {% else %}
+  {% include 'nutrition_tracker/includes/nutrition_tracker_row.html' with type=type nutrient_id=nutrient_id %}
+  {% endif %}
+  {% endfor %}
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    {% for nutrient_id in TRACKER_NUTRIENT_IDS %}
+    {% get_nutrient_amount nutrient_id MEALS_NUTRIENTS as amount %}
+    {% if amount is not None %}
+    $('.nutrition-tracker').attr('data-{{ nutrient_id }}', {{ amount }});
+    {% endif %}
+    {% get_rdi_amount nutrient_id as dv_amount %}
+    {% if dv_amount is not None %}
+    $('.nutrition-tracker').attr('data-dv-{{ nutrient_id }}', {{ dv_amount }});
+    {% endif %}
+    {% endfor %}
+
+    let $elem;
+    {% for lfood in lfoods %}
+    {% with lfood as lfood %}
+    {% for nutrient_id in TRACKER_NUTRIENT_IDS %}
+    $elem = $('#div_id_{{ lfood.external_id }}');
+    if ($elem.length) {
+      {% get_nutrient_amount nutrient_id FOOD_NUTRIENTS as amount %}
+      {% if amount is not None %}
+      $elem.attr('data-{{ nutrient_id }}', {{ amount }});
+      {% endif %}
+    }
+    {% endfor %}
+    {% endwith %}
+    {% endfor %}
+
+    {% for lrecipe in lrecipes %}
+    {% with lrecipe as lrecipe %}
+    {% for nutrient_id in TRACKER_NUTRIENT_IDS %}
+    $elem = $('#div_id_{{ lrecipe.external_id }}');
+    if ($elem.length) {
+      {% get_nutrient_amount nutrient_id RECIPE_NUTRIENTS as amount %}
+      {% if amount is not None %}
+      $elem.attr('data-{{ nutrient_id }}', {{ amount }});
+      {% endif %}
+    }
+    {% endfor %}
+    {% endwith %}
+    {% endfor %}
+  });
+</script>

@@ -1,0 +1,166 @@
+<form  class="form-horizontal" method="post" > <input type="hidden" name="external_id" value="{FOOD_EXTERNAL_ID}" id="id_external_id"> <div id="div_id_gtin_upc" class="form-group row mb-1 mx-auto"> <label for="id_gtin_upc" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                GTIN/UPC
+            </label> <div class="col-lg-8 pl-0"> <input type="text" name="gtin_upc" maxlength="20" onchange="checkbarcodeexists();" class="textinput textInput form-control" id="id_gtin_upc"> <span class="barcode-scan d-none barcode-scan-field"> <a aria-pressed="true" class="btn btn-online-success btn-sm edit-page-barcode" href="#" role="button" onclick="readBarcode(this);"> <i class="bi bi-upc-scan"> </a> </span> </div> </div> <small id="gtin_upc_message" class="d-none offset-lg-4 loading text-muted">Barcode found, redirecting</small> <div id="div_id_name" class="form-group row mb-1 mx-auto"> <label for="id_name" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Name
+            </label> <div class="col-lg-8 pl-0"> <input type="text" name="name" value="test" maxlength="1000" class="textinput textInput form-control" id="id_name"> <small id="hint_id_name" class="form-text text-muted">From Food database: test</small> </div> </div> <div id="div_id_brand_name" class="form-group row mb-1 mx-auto"> <label for="id_brand_name" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Brand name
+            </label> <div class="col-lg-8 pl-0"> <input type="text" name="brand_name" maxlength="1000" class="textinput textInput form-control" id="id_brand_name"> </div> </div> <div id="div_id_subbrand_name" class="form-group row mb-1 mx-auto"> <label for="id_subbrand_name" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Subbrand name
+            </label> <div class="col-lg-8 pl-0"> <input type="text" name="subbrand_name" maxlength="1000" class="textinput textInput form-control" id="id_subbrand_name"> </div> </div> <div id="div_id_brand_owner" class="form-group row mb-1 mx-auto"> <label for="id_brand_owner" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Brand owner
+            </label> <div class="col-lg-8 pl-0"> <input type="text" name="brand_owner" maxlength="1000" class="textinput textInput form-control" id="id_brand_owner"> </div> </div> <div id="div_id_category_id" class="form-group row mb-1 mx-auto"> <label for="id_category_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Category
+            </label> <div class="col-lg-8 pl-0"> <select name="category_id" class="select custom-select" id="id_category_id"> <option value="">Select Category</option> <option value="28">Alcoholic Beverages</option> <option value="24">American Indian/Alaska Native Foods</option> <option value="3">Baby Foods</option> <option value="18">Baked Products</option> <option value="13">Beef Products</option> <option value="14">Beverages</option> <option value="26">Branded Food Products Database</option> <option value="8">Breakfast Cereals</option> <option value="20">Cereal Grains and Pasta</option> <option selected value="1">Dairy and Egg Products</option> <option value="21">Fast Foods</option> <option value="4">Fats and Oils</option> <option value="15">Finfish and Shellfish Products</option> <option value="9">Fruits and Fruit Juices</option> <option value="17">Lamb, Veal, and Game Products</option> <option value="16">Legumes and Legume Products</option> <option value="22">Meals, Entrees, and Side Dishes</option> <option value="12">Nut and Seed Products</option> <option value="10">Pork Products</option> <option value="5">Poultry Products</option> <option value="27">Quality Control Materials</option> <option value="25">Restaurant Foods</option> <option value="7">Sausages and Luncheon Meats</option> <option value="23">Snacks</option> <option value="6">Soups, Sauces, and Gravies</option> <option value="2">Spices and Herbs</option> <option value="19">Sweets</option> <option value="11">Vegetables and Vegetable Products</option>
+
+</select> </div> </div> <div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Servings</p>
+</div>
+<div
+    class="font-size-12" > <style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style> <div> <input type="hidden" name="nutrition_tracker-userfoodportion-content_type-object_id-TOTAL_FORMS" value="1" id="id_nutrition_tracker-userfoodportion-content_type-object_id-TOTAL_FORMS"> <input type="hidden" name="nutrition_tracker-userfoodportion-content_type-object_id-INITIAL_FORMS" value="0" id="id_nutrition_tracker-userfoodportion-content_type-object_id-INITIAL_FORMS"> <input type="hidden" name="nutrition_tracker-userfoodportion-content_type-object_id-MIN_NUM_FORMS" value="0" id="id_nutrition_tracker-userfoodportion-content_type-object_id-MIN_NUM_FORMS"> <input type="hidden" name="nutrition_tracker-userfoodportion-content_type-object_id-MAX_NUM_FORMS" value="1000" id="id_nutrition_tracker-userfoodportion-content_type-object_id-MAX_NUM_FORMS"> </div> <div
+    class="formset_row-nutrition_tracker-userfoodportion-content_type-object_id" > <div
+    class="clearfix" > </div> <div id="div_id_nutrition_tracker-userfoodportion-content_type-object_id-0-servings_per_container" class="form-group row mb-1 mx-auto"> <label for="id_nutrition_tracker-userfoodportion-content_type-object_id-0-servings_per_container" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Servings per container
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="nutrition_tracker-userfoodportion-content_type-object_id-0-servings_per_container" min="0" step="any" onchange="updateServingsPerContainer()" class="numberinput form-control" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-servings_per_container"> </div> </div> <div id="div_id_nutrition_tracker-userfoodportion-content_type-object_id-0-household_quantity" class="form-group row mb-1 mx-auto"> <label for="id_nutrition_tracker-userfoodportion-content_type-object_id-0-household_quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Household quantity
+            </label> <div class="col-lg-8 pl-0"> <select name="nutrition_tracker-userfoodportion-content_type-object_id-0-household_quantity" onchange="updateDisplayServing()" class="select custom-select" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-household_quantity"> <option value="" selected>Select quantity</option> <option value="1/8">1/8</option> <option value="1/6">1/6</option> <option value="1/5">1/5</option> <option value="1/4">1/4</option> <option value="1/3">1/3</option> <option value="3/8">3/8</option> <option value="2/5">2/5</option> <option value="1/2">1/2</option> <option value="3/5">3/5</option> <option value="5/8">5/8</option> <option value="2/3">2/3</option> <option value="3/4">3/4</option> <option value="4/5">4/5</option> <option value="5/6">5/6</option> <option value="7/8">7/8</option> <option value="1">1</option> <option value="3/2">3/2</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option>
+
+</select> </div> </div> <div id="div_id_nutrition_tracker-userfoodportion-content_type-object_id-0-measure_unit" class="form-group row mb-1 mx-auto"> <label for="id_nutrition_tracker-userfoodportion-content_type-object_id-0-measure_unit" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Household unit
+            </label> <div class="col-lg-8 pl-0"> <select name="nutrition_tracker-userfoodportion-content_type-object_id-0-measure_unit" onchange="updateDisplayServing()" class="select custom-select" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-measure_unit"> <option value="" selected>Select unit</option> <option value="1066">back</option> <option value="1088">bag</option> <option value="1089">bagel</option> <option value="1119">banana</option> <option value="1013">bar</option> <option value="1014">bird</option> <option value="1015">biscuit</option> <option value="1016">bottle</option> <option value="1090">bowl</option> <option value="1017">box</option> <option value="1091">breadstick</option> <option value="1018">breast</option> <option value="1092">bulb</option> <option value="1085">bun</option> <option value="1117">bunch</option> <option value="1080">burrito</option> <option value="1093">cake</option> <option value="1019">can</option> <option value="1094">carton</option> <option value="1020">chicken</option> <option value="1083">chips</option> <option value="1021">chop</option> <option value="1095">chunk</option> <option value="1023">container</option> <option value="1096">contents</option> <option value="1022">cookie</option> <option value="1076">corndog</option> <option value="1024">cracker</option> <option value="1086">crust</option> <option value="1006">cubic centimeter</option> <option value="1005">cubic inch</option> <option value="1000">cup</option> <option value="1097">cutlet</option> <option value="1098">doughnut</option> <option value="1025">drink</option> <option value="1012">dripping w</option> <option value="1026">drumstick</option> <option value="1071">each</option> <option value="1099">egg</option> <option value="1072">filet</option> <option value="1027">fillet</option> <option value="1100">fish</option> <option value="1009">fl oz</option> <option value="1101">foreshank</option> <option value="1102">frankfurter</option> <option value="1103">fries</option> <option value="1028">fruit</option> <option value="1007">gallon</option> <option value="1104">head</option> <option value="1105">jar</option> <option value="1029">large</option> <option value="1030">lb</option> <option value="1031">leaf</option> <option value="1032">leg</option> <option value="1033">link</option> <option value="1034">links</option> <option value="1003">liter</option> <option value="1035">loaf</option> <option value="1106">loin</option> <option value="1063">medallion</option> <option value="1036">medium</option> <option value="1004">milliliter</option> <option value="1037">muffin</option> <option value="1074">nugget</option> <option value="1067">olive</option> <option value="1120">onion</option> <option value="1069">order</option> <option value="1061">orig ckd g</option> <option value="1062">orig rw g</option> <option value="1038">oz</option> <option value="1039">package</option> <option value="1040">packet</option> <option value="1010">paired cooked w</option> <option value="1011">paired raw w</option> <option value="1107">pancake</option> <option value="1042">patties</option> <option value="1041">patty</option> <option value="1064">pie</option> <option value="1043">piece</option> <option value="1044">pieces</option> <option value="1008">pint</option> <option value="1108">pizza</option> <option value="1073">plantain</option> <option value="1068">pocket</option> <option value="1075">pretzel</option> <option value="1045">quart</option> <option value="1109">rack</option> <option value="1110">ribs</option> <option value="1046">roast</option> <option value="1111">roll</option> <option value="1078">sandwich</option> <option value="1047">sausage</option> <option value="1048">scoop</option> <option value="1049">serving</option> <option value="1112">shank</option> <option value="1087">sheet</option> <option value="1084">shell</option> <option value="1113">shoulder</option> <option value="1070">shrimp</option> <option value="1114">skin</option> <option value="1050">slice</option> <option value="1051">slices</option> <option value="1052">small</option> <option value="1077">spear</option> <option value="1053">stalk</option> <option value="1054">steak</option> <option value="1055">stick</option> <option value="1056">strip</option> <option value="1001">tablespoon</option> <option value="1118">tablespoons</option> <option value="1057">tablet</option> <option value="1081">taco</option> <option value="1002">teaspoon</option> <option value="1058">thigh</option> <option value="1082">tomatoes</option> <option value="1079">tortilla</option> <option value="9999">undetermined</option> <option value="1059">unit</option> <option value="1115">wafers</option> <option value="1060">wedge</option> <option value="1065">wing</option> <option value="1116">wrap</option>
+
+</select> </div> </div> <div id="div_id_nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size" class="form-group row mb-1 mx-auto"> <label for="id_nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <input type="number" name="nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size" min="0" step="any" onchange="updateDisplayServing()" class="numberinput form-control" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size"> </div> </div> <div id="div_id_nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size_unit" class="form-group row mb-1 mx-auto"> <label for="id_nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size_unit" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving unit<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size_unit" onchange="updateDisplayServing()" class="select custom-select" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-serving_size_unit"> <option value="" selected>Select unit</option> <option value="g">g</option> <option value="ml">ml</option>
+
+</select> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_nutrition_tracker-userfoodportion-content_type-object_id-0-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="nutrition_tracker-userfoodportion-content_type-object_id-0-DELETE" class="checkboxinput custom-control-input" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-DELETE"> <label for="id_nutrition_tracker-userfoodportion-content_type-object_id-0-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="nutrition_tracker-userfoodportion-content_type-object_id-0-id" id="id_nutrition_tracker-userfoodportion-content_type-object_id-0-id"> <script src="/static/nutrition_tracker/js/jquery.formset.js"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-nutrition_tracker-userfoodportion-content_type-object_id').formset({
+    addText: 'Add more',
+    deleteText: 'Delete',
+    prefix: 'nutrition_tracker-userfoodportion-content_type-object_id',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 ',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left offset-lg-4',
+    added: function() {
+      ;  // eslint-disable-line
+    },
+    removed: function() {
+      ;  // eslint-disable-line
+    },
+  });
+</script>
+
+</div>
+<div
+    class="clearfix" > </div>
+<div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Nutrition details</p>
+</div>
+<div
+    class="font-size-12" > <div id="div_id_1008" class="form-group row mb-1 mx-auto"> <label for="id_1008" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Calories (kcal)<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <input type="number" name="1008" min="0" step="any" onchange="updateNutrient(1008)" class="numberinput form-control" required id="id_1008"> </div> </div> <div id="div_id_1004" class="form-group row mb-1 mx-auto"> <label for="id_1004" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Fat (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1004" min="0" step="any" onchange="updateNutrient(1004)" class="numberinput form-control" id="id_1004"> </div> </div> <div id="div_id_1258" class="form-group row mb-1 mx-auto"> <label for="id_1258" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Saturated Fat (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1258" min="0" step="any" onchange="updateNutrient(1258)" class="numberinput form-control" id="id_1258"> </div> </div> <div id="div_id_1257" class="form-group row mb-1 mx-auto"> <label for="id_1257" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Trans Fat (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1257" min="0" step="any" onchange="updateNutrient(1257)" class="numberinput form-control" id="id_1257"> </div> </div> <div id="div_id_1293" class="form-group row mb-1 mx-auto"> <label for="id_1293" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Polyunsaturated Fat (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1293" min="0" step="any" onchange="updateNutrient(1293)" class="numberinput form-control" id="id_1293"> </div> </div> <div id="div_id_1292" class="form-group row mb-1 mx-auto"> <label for="id_1292" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Monounsaturated Fat (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1292" min="0" step="any" onchange="updateNutrient(1292)" class="numberinput form-control" id="id_1292"> </div> </div> <div id="div_id_1253" class="form-group row mb-1 mx-auto"> <label for="id_1253" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Cholesterol (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1253" min="0" step="any" onchange="updateNutrient(1253)" class="numberinput form-control" id="id_1253"> </div> </div> <div id="div_id_1093" class="form-group row mb-1 mx-auto"> <label for="id_1093" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Sodium (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1093" min="0" step="any" onchange="updateNutrient(1093)" class="numberinput form-control" id="id_1093"> </div> </div> <div id="div_id_1099" class="form-group row mb-1 mx-auto"> <label for="id_1099" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Fluoride (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1099" min="0" step="any" onchange="updateNutrient(1099)" class="numberinput form-control" id="id_1099"> </div> </div> <div id="div_id_1005" class="form-group row mb-1 mx-auto"> <label for="id_1005" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Carbohydrate (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1005" min="0" step="any" onchange="updateNutrient(1005)" class="numberinput form-control" id="id_1005"> </div> </div> <div id="div_id_1079" class="form-group row mb-1 mx-auto"> <label for="id_1079" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Dietary Fiber (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1079" min="0" step="any" onchange="updateNutrient(1079)" class="numberinput form-control" id="id_1079"> </div> </div> <div id="div_id_1082" class="form-group row mb-1 mx-auto"> <label for="id_1082" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Soluble Fiber (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1082" min="0" step="any" onchange="updateNutrient(1082)" class="numberinput form-control" id="id_1082"> </div> </div> <div id="div_id_1084" class="form-group row mb-1 mx-auto"> <label for="id_1084" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Insoluble Fiber (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1084" min="0" step="any" onchange="updateNutrient(1084)" class="numberinput form-control" id="id_1084"> </div> </div> <div id="div_id_1063" class="form-group row mb-1 mx-auto"> <label for="id_1063" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Sugars (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1063" min="0" step="any" onchange="updateNutrient(1063)" class="numberinput form-control" id="id_1063"> </div> </div> <div id="div_id_1235" class="form-group row mb-1 mx-auto"> <label for="id_1235" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Added Sugars (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1235" min="0" step="any" onchange="updateNutrient(1235)" class="numberinput form-control" id="id_1235"> </div> </div> <div id="div_id_1086" class="form-group row mb-1 mx-auto"> <label for="id_1086" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Sugar Alcohol (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1086" min="0" step="any" onchange="updateNutrient(1086)" class="numberinput form-control" id="id_1086"> </div> </div> <div id="div_id_1003" class="form-group row mb-1 mx-auto"> <label for="id_1003" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Protein (g)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1003" min="0" step="any" onchange="updateNutrient(1003)" class="numberinput form-control" id="id_1003"> </div> </div> <div id="div_id_1114" class="form-group row mb-1 mx-auto"> <label for="id_1114" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin D (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1114" min="0" step="any" onchange="updateNutrient(1114)" class="numberinput form-control" id="id_1114"> </div> </div> <div id="div_id_1087" class="form-group row mb-1 mx-auto"> <label for="id_1087" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Calcium (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1087" min="0" step="any" onchange="updateNutrient(1087)" class="numberinput form-control" id="id_1087"> </div> </div> <div id="div_id_1089" class="form-group row mb-1 mx-auto"> <label for="id_1089" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Iron (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1089" min="0" step="any" onchange="updateNutrient(1089)" class="numberinput form-control" id="id_1089"> </div> </div> <div id="div_id_1092" class="form-group row mb-1 mx-auto"> <label for="id_1092" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Potassium (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1092" min="0" step="any" onchange="updateNutrient(1092)" class="numberinput form-control" id="id_1092"> </div> </div> <div id="div_id_1106" class="form-group row mb-1 mx-auto"> <label for="id_1106" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin A (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1106" min="0" step="any" onchange="updateNutrient(1106)" class="numberinput form-control" id="id_1106"> </div> </div> <div id="div_id_1162" class="form-group row mb-1 mx-auto"> <label for="id_1162" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin C (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1162" min="0" step="any" onchange="updateNutrient(1162)" class="numberinput form-control" id="id_1162"> </div> </div> <div id="div_id_1109" class="form-group row mb-1 mx-auto"> <label for="id_1109" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin E (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1109" min="0" step="any" onchange="updateNutrient(1109)" class="numberinput form-control" id="id_1109"> </div> </div> <div id="div_id_1183" class="form-group row mb-1 mx-auto"> <label for="id_1183" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin K (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1183" min="0" step="any" onchange="updateNutrient(1183)" class="numberinput form-control" id="id_1183"> </div> </div> <div id="div_id_1165" class="form-group row mb-1 mx-auto"> <label for="id_1165" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Thiamin (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1165" min="0" step="any" onchange="updateNutrient(1165)" class="numberinput form-control" id="id_1165"> </div> </div> <div id="div_id_1166" class="form-group row mb-1 mx-auto"> <label for="id_1166" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Riboflavin (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1166" min="0" step="any" onchange="updateNutrient(1166)" class="numberinput form-control" id="id_1166"> </div> </div> <div id="div_id_1167" class="form-group row mb-1 mx-auto"> <label for="id_1167" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Niacin (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1167" min="0" step="any" onchange="updateNutrient(1167)" class="numberinput form-control" id="id_1167"> </div> </div> <div id="div_id_1175" class="form-group row mb-1 mx-auto"> <label for="id_1175" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin B6 (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1175" min="0" step="any" onchange="updateNutrient(1175)" class="numberinput form-control" id="id_1175"> </div> </div> <div id="div_id_1177" class="form-group row mb-1 mx-auto"> <label for="id_1177" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Folate DFE (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1177" min="0" step="any" onchange="updateNutrient(1177)" class="numberinput form-control" id="id_1177"> </div> </div> <div id="div_id_1178" class="form-group row mb-1 mx-auto"> <label for="id_1178" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Vitamin B12 (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1178" min="0" step="any" onchange="updateNutrient(1178)" class="numberinput form-control" id="id_1178"> </div> </div> <div id="div_id_1176" class="form-group row mb-1 mx-auto"> <label for="id_1176" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Biotin (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1176" min="0" step="any" onchange="updateNutrient(1176)" class="numberinput form-control" id="id_1176"> </div> </div> <div id="div_id_1170" class="form-group row mb-1 mx-auto"> <label for="id_1170" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Pantothenic Acid (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1170" min="0" step="any" onchange="updateNutrient(1170)" class="numberinput form-control" id="id_1170"> </div> </div> <div id="div_id_1091" class="form-group row mb-1 mx-auto"> <label for="id_1091" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Phosphorus (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1091" min="0" step="any" onchange="updateNutrient(1091)" class="numberinput form-control" id="id_1091"> </div> </div> <div id="div_id_1100" class="form-group row mb-1 mx-auto"> <label for="id_1100" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Iodine (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1100" min="0" step="any" onchange="updateNutrient(1100)" class="numberinput form-control" id="id_1100"> </div> </div> <div id="div_id_1090" class="form-group row mb-1 mx-auto"> <label for="id_1090" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Magnesium (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1090" min="0" step="any" onchange="updateNutrient(1090)" class="numberinput form-control" id="id_1090"> </div> </div> <div id="div_id_1095" class="form-group row mb-1 mx-auto"> <label for="id_1095" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Zinc (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1095" min="0" step="any" onchange="updateNutrient(1095)" class="numberinput form-control" id="id_1095"> </div> </div> <div id="div_id_1103" class="form-group row mb-1 mx-auto"> <label for="id_1103" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Selenium (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1103" min="0" step="any" onchange="updateNutrient(1103)" class="numberinput form-control" id="id_1103"> </div> </div> <div id="div_id_1098" class="form-group row mb-1 mx-auto"> <label for="id_1098" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Copper (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1098" min="0" step="any" onchange="updateNutrient(1098)" class="numberinput form-control" id="id_1098"> </div> </div> <div id="div_id_1101" class="form-group row mb-1 mx-auto"> <label for="id_1101" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Manganese (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1101" min="0" step="any" onchange="updateNutrient(1101)" class="numberinput form-control" id="id_1101"> </div> </div> <div id="div_id_1096" class="form-group row mb-1 mx-auto"> <label for="id_1096" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Chromium (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1096" min="0" step="any" onchange="updateNutrient(1096)" class="numberinput form-control" id="id_1096"> </div> </div> <div id="div_id_1102" class="form-group row mb-1 mx-auto"> <label for="id_1102" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Molybdenum (mcg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1102" min="0" step="any" onchange="updateNutrient(1102)" class="numberinput form-control" id="id_1102"> </div> </div> <div id="div_id_1180" class="form-group row mb-1 mx-auto"> <label for="id_1180" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Choline (mg)
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="1180" min="0" step="any" onchange="updateNutrient(1180)" class="numberinput form-control" id="id_1180"> </div> </div> </div>
+<div class="form-group row mx-auto"> <div class="aab col-lg-4 text-lg-right font-weight-bold pl-0"></div> <div class="col-lg-8 pl-0"> <input type="submit"
+    name="save"
+    value="Save Food"
+
+        class="btn btn-primary"
+        id="submit-id-save"
+
+     onclick="unhideSubmitSpinner()"
+    />
+<a class="btn btn-light" href="/my_foods/">Cancel</a><div id="submit_spinner" class="spinner-border spinner-border-sm text-primary ml-1 d-none"role="status"><span class="sr-only">Loading...</span></div> </div>
+</div> </form>

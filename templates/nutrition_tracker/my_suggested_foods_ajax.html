@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<div class="col-lg-12 px-0 mt-3">
+  {% if suggested_lobjects %}
+  {% include 'nutrition_tracker/includes/items_module.html' with item_lobjects=suggested_lobjects wrapper_class='mb-3' %}
+  {% endif %}
+  {% translate "See more suggestions" as prompt %}
+  {% translate "Using MealPlanner" as subprompt %}
+  {% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_MY_MEALPLAN buttontext=TEXT_MEALPLAN %}
+</div>

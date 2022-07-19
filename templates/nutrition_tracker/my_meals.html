@@ -1,0 +1,28 @@
+{% extends 'nutrition_tracker/my_kitchen_base.html' %}
+
+{% load i18n %}
+{% load utils %}
+
+{% block head_title %}{% translate "My Meals" %}{% endblock %}
+
+{% block kitchen_content %}
+{% translate "My Meals" as header %}
+{% include 'nutrition_tracker/includes/kitchen_prompt.html' with header=header primaryurl=URL_CREATE_MEAL primarytext=TEXT_CREATE_MEAL secondaryurl1=URL_CREATE_FOOD secondarytext1=TEXT_CREATE_FOOD secondaryurl2=URL_CREATE_RECIPE secondarytext2=TEXT_CREATE_RECIPE %}
+
+{% if lmeals %}
+<ul class="item-list-main list-group list-group-flush mb-3">
+  {% for lmeal in lmeals %}
+  {% include 'nutrition_tracker/includes/kitchen_items.html' with kitchenobject=lmeal detailurl=URL_DETAIL_MEAL editurl=URL_EDIT_MEAL edittext=TEXT_EDIT_MEAL deleteurl=URL_DELETE_MEAL deletetext=TEXT_DELETE_MEAL maintext=lmeal.meal_type subtext=lmeal.display_date %}
+  {% endfor %}
+</ul>
+
+{% include 'nutrition_tracker/includes/paginator.html' %}
+
+{% else %}
+{% translate "Don't see any saved items?" as prompt %}
+{% translate "Log your first meal!" as subprompt %}
+<div class="mt-4">
+  {% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_CREATE_MEAL buttontext=TEXT_CREATE_MEAL %}
+</div>
+{% endif %}
+{% endblock %}

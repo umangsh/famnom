@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+
+{% block head_title %}{% translate "My Mealplan" %}{% endblock %}
+
+{% block authenticated_content %}
+<!-- Modal -->
+<div class="modal" id="progressModal" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered progress-modal" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title loading" id="modalLongTitle">{% translate "Working" %}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+	</button>
+      </div>
+      <div class="modal-body">
+	<img src="{% static 'nutrition_tracker/img/progress.gif' %}">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8 pt-3">
+    {% crispy form form.helper %}
+  </div>
+</div>
+{% endblock %}

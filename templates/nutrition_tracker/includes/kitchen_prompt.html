@@ -1,0 +1,23 @@
+{% load i18n %}
+{% load utils %}
+
+<div class="row justify-content-between align-items-center mx-auto mt-3 mb-4">
+  <div class="mr-auto p-2 w-75">
+    <p class="display-5 mb-0">{{ header }}</p>
+    {% url URL_PROFILE as profile_url %}
+    <small>{% blocktranslate %}Add family members in your <a href="{{ profile_url }}" class="text-decoration-none">profile</a> to share foods and recipes.{% endblocktranslate %}</small>
+  </div>
+  <div class="d-flex">
+    <div class="dropdown">
+      <a class="btn btn-sm btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	{% translate "Add" %}
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	<a class="dropdown-item" href="{% url primaryurl %}">{{ primarytext }}</a>
+	<a class="dropdown-item" href="{% url secondaryurl1 %}">{{ secondarytext1 }}</a>
+	<a class="dropdown-item" href="{% url secondaryurl2 %}">{{ secondarytext2 }}</a>
+      </div>
+    </div>
+  </div>
+</div>

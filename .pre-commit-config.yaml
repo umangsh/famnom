@@ -1,0 +1,147 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+# Apply to all files without commiting:
+#   pre-commit run --all-files
+# Update this file:
+#   pre-commit autoupdate
+default_language_version:
+  python: python3.9
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.1.0
+  hooks:
+    # See https://pre-commit.com/hooks.html for more hooks
+    - id: check-added-large-files
+      args: [ "--maxkb=1024" ]
+    - id: check-ast
+    - id: check-case-conflict
+    - id: check-docstring-first
+    - id: check-executables-have-shebangs
+    - id: check-json
+    - id: check-merge-conflict
+    - id: check-yaml
+    - id: debug-statements
+    - id: end-of-file-fixer
+    - id: fix-byte-order-marker
+    - id: mixed-line-ending
+    - id: name-tests-test
+      name: python tests naming
+      args: [ "--django" ]
+      files: (^|/)test\_.+\.py$
+    - id: trailing-whitespace
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.1.0
+  hooks:
+    - id: codespell
+      args: [ "-L", "ba" ]
+- repo: https://github.com/asottile/seed-isort-config
+  rev: v2.2.0
+  hooks:
+    - id: seed-isort-config
+- repo: https://github.com/asottile/pyupgrade
+  rev: v2.31.0
+  hooks:
+    - id: pyupgrade
+      args: [ "--py36-plus", "--py37-plus", "--py38-plus", "--py39-plus" ]
+- repo: https://github.com/pycqa/isort
+  rev: 5.10.1
+  hooks:
+    - id: isort
+      exclude: "[a-zA-Z]*/(migrations)/(.)*"
+- repo: https://github.com/psf/black
+  rev: 22.3.0
+  hooks:
+    - id: black
+      exclude: "[a-zA-Z]*/(migrations)/(.)*"
+- repo: https://github.com/pycqa/bandit
+  rev: 1.7.2
+  hooks:
+    - id: bandit
+      args: ['-iii', '-ll']
+- repo: https://github.com/pre-commit/mirrors-eslint
+  rev: 'v7.21.0'
+  hooks:
+    - id: eslint
+      name: check js style (eslint)
+      entry: eslint --no-error-on-unmatched-pattern
+      types: [javascript]
+      additional_dependencies: [
+          "eslint@7.21.0",
+          "eslint-config-eslint@7.0.0",
+          "eslint-config-google@0.14.0",
+          "eslint-plugin-html@6.1.1",
+          "eslint-plugin-qunit@7.2.0",
+          "qunit@2.18.0",
+      ]
+    - id: eslint
+      name: check html style (eslint)
+      entry: eslint --no-error-on-unmatched-pattern --ext .html templates
+      types: [html]
+      additional_dependencies: [
+          "eslint@7.21.0",
+          "eslint-config-eslint@7.0.0",
+          "eslint-config-google@0.14.0",
+          "eslint-plugin-html@6.1.1",
+      ]
+- repo: https://github.com/pre-commit/mirrors-prettier
+  rev: 'v2.5.1'
+  hooks:
+    - id: prettier
+      name: check css style (prettier)
+      types: [css]
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.9.2
+  hooks:
+    - id: flake8
+      name: check python style (flake8)
+      additional_dependencies: [
+          "flake8-bugbear",
+          "flake8-comprehensions",
+          "flake8-mutable",
+          "flake8-print",
+          "flake8-simplify",
+      ]
+- repo: local
+  hooks:
+    - id: pylint
+      name: Python Linter (pylint)
+      entry: pylint
+      language: system
+      types: [python]
+      require_serial: true
+      exclude: "[a-zA-Z]*/(migrations)/(.)*"
+      args: [ "--load-plugins=pylint_django", "--django-settings-module=nourish.settings.dev" ]
+    - id: mypy
+      name: Python static checker (mypy)
+      entry: mypy
+      language: system
+      types: [python]
+      require_serial: true
+      exclude: ".*(test_|tests).*?py|[a-zA-Z]*/(migrations)/(.)*"
+    - id: djangotests
+      name: run python tests
+      entry: python3 manage.py test
+      types: [python]
+      pass_filenames: false
+      language: system
+    - id: djangovalidatetemplates
+      name: run template validator
+      entry: python3 manage.py validate_templates
+      types: [html]
+      pass_filenames: false
+      language: system
+    - id: jsqunittests
+      name: run javascript tests
+      entry: npm test
+      types: [javascript]
+      pass_filenames: false
+      language: node
+      additional_dependencies: [
+          "qunit@2.18.0",
+      ]
+    - id: missing-migrations
+      name: check missing database migrations
+      entry: python3 manage.py makemigrations --check --dry-run
+      pass_filenames: false
+      language: system
+      types: [python]

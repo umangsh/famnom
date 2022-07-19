@@ -1,0 +1,101 @@
+<form  class="form-horizontal" method="post" > <input type="hidden" name="external_id" id="id_external_id"> <div id="div_id_meal_type" class="form-group row mb-1 mx-auto"> <label for="id_meal_type" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Meal<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="meal_type" class="select custom-select" required id="id_meal_type"> <option value="" selected>Select meal</option> <option value="Suhur">Suhur</option> <option value="Breakfast">Breakfast</option> <option value="Second Breakfast">Second Breakfast</option> <option value="Elevenses">Elevenses</option> <option value="Brunch">Brunch</option> <option value="Lunch">Lunch</option> <option value="Snack">Snack</option> <option value="Afternoon Tea">Afternoon Tea</option> <option value="Tiffin">Tiffin</option> <option value="Dinner">Dinner</option> <option value="Supper">Supper</option> <option value="Iftar">Iftar</option> <option value="Siu Yeh">Siu Yeh</option>
+
+</select> </div> </div> <div id="div_id_meal_date" class="form-group row mb-1 mx-auto"> <label for="id_meal_date" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Meal date<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <input type="text" name="meal_date" value="{TODAY_DATE}" class="dateinput form-control" required id="id_meal_date"> </div> </div> <div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Add foods from your Kitchen</p>
+</div>
+<div
+    class="font-size-12" > <style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style> <div> <input type="hidden" name="food-TOTAL_FORMS" value="1" id="id_food-TOTAL_FORMS"> <input type="hidden" name="food-INITIAL_FORMS" value="0" id="id_food-INITIAL_FORMS"> <input type="hidden" name="food-MIN_NUM_FORMS" value="0" id="id_food-MIN_NUM_FORMS"> <input type="hidden" name="food-MAX_NUM_FORMS" value="1000" id="id_food-MAX_NUM_FORMS"> </div> <div
+    class="formset_row-food" > <div
+    class="clearfix" > </div> <div id="div_id_food-0-child_external_id" class="form-group row mb-1 mx-auto"> <label for="id_food-0-child_external_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="food-0-child_external_id" class="foods-dropdown select custom-select" onchange="getServings(this);getNutrients(this, true);" id="id_food-0-child_external_id">
+</select> </div> </div> <div id="div_id_food-0-serving" class="form-group row mb-1 mx-auto"> <label for="id_food-0-serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving Size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="food-0-serving" readonly="True" onchange="updateNutrients();" class="select custom-select" id="id_food-0-serving">
+</select> </div> </div> <div id="div_id_food-0-quantity" class="form-group row mb-1 mx-auto"> <label for="id_food-0-quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Servings
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="food-0-quantity" min="0" step="any" readonly="True" onchange="updateNutrients();" class="numberinput form-control" id="id_food-0-quantity"> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_food-0-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="food-0-DELETE" class="checkboxinput custom-control-input" id="id_food-0-DELETE"> <label for="id_food-0-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="food-0-id" id="id_food-0-id"> <script src="/static/nutrition_tracker/js/jquery.formset.js"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-food').formset({
+    addText: 'Add more',
+    deleteText: 'Delete',
+    prefix: 'food',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 ',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left offset-lg-4',
+    added: function() {
+      initFoodsDropdown();;  // eslint-disable-line
+    },
+    removed: function() {
+      updateNutrients();;  // eslint-disable-line
+    },
+  });
+</script>
+
+</div>
+<div
+    class="clearfix" > </div>
+<div
+    class="py-3" > <p class="lead m-0 font-weight-bold">Add recipes from your Kitchen</p>
+</div>
+<div
+    class="font-size-12" > <style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style> <div> <input type="hidden" name="recipe-TOTAL_FORMS" value="1" id="id_recipe-TOTAL_FORMS"> <input type="hidden" name="recipe-INITIAL_FORMS" value="0" id="id_recipe-INITIAL_FORMS"> <input type="hidden" name="recipe-MIN_NUM_FORMS" value="0" id="id_recipe-MIN_NUM_FORMS"> <input type="hidden" name="recipe-MAX_NUM_FORMS" value="1000" id="id_recipe-MAX_NUM_FORMS"> </div> <div
+    class="formset_row-recipe" > <div
+    class="clearfix" > </div> <div id="div_id_recipe-0-child_external_id" class="form-group row mb-1 mx-auto"> <label for="id_recipe-0-child_external_id" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Name<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="recipe-0-child_external_id" class="recipes-dropdown select custom-select" onchange="getServings(this);getNutrients(this, true);" id="id_recipe-0-child_external_id">
+</select> </div> </div> <div id="div_id_recipe-0-serving" class="form-group row mb-1 mx-auto"> <label for="id_recipe-0-serving" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0 requiredField">
+                Serving Size<span class="asteriskField">*</span> </label> <div class="col-lg-8 pl-0"> <select name="recipe-0-serving" readonly="True" onchange="updateNutrients();" class="select custom-select" id="id_recipe-0-serving">
+</select> </div> </div> <div id="div_id_recipe-0-quantity" class="form-group row mb-1 mx-auto"> <label for="id_recipe-0-quantity" class="col-form-label col-lg-4 text-lg-right font-weight-bold pl-0">
+                Total Servings
+            </label> <div class="col-lg-8 pl-0"> <input type="number" name="recipe-0-quantity" min="0" step="any" readonly="True" onchange="updateNutrients();" class="numberinput form-control" id="id_recipe-0-quantity"> </div> </div> <div class="form-group row"> <div class="offset-lg-4 col-lg-8 pl-0"> <div id="div_id_recipe-0-DELETE" class="custom-control custom-checkbox"> <input type="checkbox" name="recipe-0-DELETE" class="checkboxinput custom-control-input" id="id_recipe-0-DELETE"> <label for="id_recipe-0-DELETE" class="custom-control-label">
+                    Delete
+                </label> </div> </div> </div> </div> <input type="hidden" name="recipe-0-id" id="id_recipe-0-id"> <script src="/static/nutrition_tracker/js/jquery.formset.js"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-recipe').formset({
+    addText: 'Add more',
+    deleteText: 'Delete',
+    prefix: 'recipe',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 ',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left offset-lg-4',
+    added: function() {
+      initRecipesDropdown();;  // eslint-disable-line
+    },
+    removed: function() {
+      updateNutrients();;  // eslint-disable-line
+    },
+  });
+</script>
+
+</div>
+<div
+    class="clearfix" > </div>
+<div class="form-group row mx-auto"> <div class="aab col-lg-4 text-lg-right font-weight-bold pl-0"></div> <div class="col-lg-8 pl-0"> <input type="submit"
+    name="save"
+    value="Save Meal"
+
+        class="btn btn-primary"
+        id="submit-id-save"
+
+     onclick="unhideSubmitSpinner()"
+    />
+<a class="btn btn-light" href="/my_meals/">Cancel</a><div id="submit_spinner" class="spinner-border spinner-border-sm text-primary ml-1 d-none"role="status"><span class="sr-only">Loading...</span></div> </div>
+</div> </form>

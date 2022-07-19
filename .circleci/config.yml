@@ -1,0 +1,118 @@
+version: '2.1'
+orbs:
+  codecov: codecov/codecov@3.2.2
+
+jobs:
+  build:
+    docker:
+      # As of 3Jul2022, dev uses 3.9.13, prod (heroku) uses 3.9.13.
+      - image: cimg/python:3.9.13-node
+        environment:
+          DJANGO_SETTINGS_MODULE: nourish.settings.test
+          SECRET_KEY: 'vvjdspvr6uv8r5#*%k1*a#91t9@(2e2-wskd@+))+3-b3d%=0u'
+          AMPLITUDE_API_KEY: 'amplitudetestkey'
+          DATABASE_URL: postgresql://root@localhost/test_nourish?sslmode=disable
+          REDIS_URL: redis://127.0.0.1:6379
+          ALLOWED_HOSTS: 127.0.0.1,localhost,0.0.0.0
+          CORS_ALLOWED_ORIGINS: http://localhost:8000,http://127.0.0.1:8000
+          SENTRY_DSN: https://test.sentry.io
+          SENTRY_TRACES_SAMPLE_RATE: 1.0
+          SENTRY_SEND_DEFAULT_PII: false
+          SENTRY_ENVIRONMENT: circleci
+          ADMIN_PATH: 'admin_for_circleci'
+      # As of 3Jul2022, dev uses postgres14.4, prod (heroku) uses postgres13.6
+      - image: cimg/postgres:13.6
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: ''
+          POSTGRES_DB: test_nourish
+          POSTGRES_HOST_AUTH_METHOD: trust
+      # As of 3Jul2022, dev uses redis7.0.2, prod (heroku) uses redis6.2.3
+      # circleci only goes as low as 6.2.7
+      - image: cimg/redis:6.2.7
+    working_directory: ~/repo
+    environment:
+      - GIT_LFS_SKIP_SMUDGE: 1
+    # The resource_class feature allows configuring CPU and RAM resources for each job.
+    # Different resource classes are available for different executors.
+    # https://circleci.com/docs/2.0/configuration-reference/#resourceclass
+    resource_class: large
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+      - run:
+          name: Install node dependencies
+          command: |
+            npm install jsdom
+            npm install jquery-mockjax
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Install git lfs
+          command: |
+            sudo apt-get update -y
+            sudo apt-get install -y git-lfs
+      - run:
+          command: |
+            git lfs ls-files -l | cut -d' ' -f1 | sort > .assets-id
+      - restore_cache:
+          key: v1-my-cache-key-{{ checksum ".assets-id" }}
+      - run:
+          command: |
+            git lfs pull
+      - save_cache:
+          key: v1-my-cache-key-{{ checksum ".assets-id" }}
+          paths:
+            - .git/lfs
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+      - run:
+          command: |
+            pip install -r requirements.txt
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          name: Combine precommit config and python versions for caching
+          command: |
+            cp .pre-commit-config.yaml pre-commit-cache-key.txt
+            python --version --version >> pre-commit-cache-key.txt
+      - restore_cache:
+          keys:
+            - v1-pc-cache-{{ checksum "pre-commit-cache-key.txt" }}
+      - run:
+          name: Install pre-commit
+          command: |
+            pre-commit install
+      - save_cache:
+          key: v1-pc-cache-{{ checksum "pre-commit-cache-key.txt" }}
+          paths:
+            - ~/.cache/pre-commit
+      - run:
+          name: Run migrations
+          command: |
+            python3 manage.py migrate
+      - run:
+          name: Run pre-commit checks
+          command: |
+            pre-commit run --show-diff-on-failure --all-files
+      - run:
+          name: Generate test coverage report
+          command: |
+            coverage run --source='.' manage.py test
+            coverage xml
+      - codecov/upload:
+          file: 'coverage.xml'
+
+workflow:
+  version: 2.1
+  build-test:
+    jobs:
+      - build

@@ -1,0 +1,33 @@
+{% extends 'nutrition_tracker/my_kitchen_base.html' %}
+
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block head_title %}{{ lrecipe.display_name }}{% endblock %}
+
+{% block authenticated_content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="row justify-content-between align-items-center mx-auto">
+      <div class="mr-auto p-2">
+	<div class="col px-0">
+	  <p class="display-4 mb-0">{{ lrecipe.name }}</p>
+	  <p class="m-0 text-muted line-height-1 font-size-20">{{ lrecipe.display_date }}</p>
+	</div>
+      </div>
+    </div>
+
+    <div class="row justify-content-between m-auto">
+      <div class="col-lg-6 pt-3 pl-1">
+	{% crispy form form.helper %}
+      </div>
+
+      <div class="col-lg-6 pt-3 d-flex pl-1">
+	{% include 'nutrition_tracker/includes/nutrition_label.html' with label_type=RECIPE_NUTRIENTS logmeal=True %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

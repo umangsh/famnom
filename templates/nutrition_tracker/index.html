@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load humanize %}
+{% load i18n %}
+{% load static %}
+{% load utils %}
+
+{% block authenticated_content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="row justify-content-between align-items-center mx-auto">
+      <div class="mr-auto p-2">
+	{% url URL_PROFILE as profile_url %}
+	<p class="display-4 mb-0">{% blocktranslate %} Welcome <a class="text-decoration-none" href="{{ profile_url }}">{{ user }}!</a>{% endblocktranslate %}</p>
+      </div>
+    </div>
+
+    <div class="row justify-content-center m-auto">
+      <div class="col-lg-5 py-3 pr-2">
+	<div class="input-group date">
+	  <a href="{{ prev_url }}" class="btn btn-outline-secondary mr-2" role="button" aria-pressed="true"><i class="bi bi-chevron-double-left"></i></a>
+	  <input id="tracker_date" type="text" class="form-control border-secondary rounded-left">
+	  <div class="input-group-append">
+	    <a href="{{ today_url }}" class="input-group-text border-secondary rounded-right" role="button" aria-pressed="true"><i class="bi bi-calendar-event"></i></a>
+	  </div>
+	  <a href="{{ next_url }}" class="btn btn-outline-secondary ml-2" role="button" aria-pressed="true"><i class="bi bi-chevron-double-right"></i></a>
+	</div>
+      </div>
+    </div>
+
+    <div class="row justify-content-between m-auto">
+      <div class="col-lg-6 pt-3 pr-2">
+	{% if lmeals %}
+	{% for lmeal in lmeals %}
+	<div class="row justify-content-between align-items-center mx-auto mb-3">
+	  <div class="mr-auto">
+	    <a class="text-reset" href="{% url URL_DETAIL_MEAL lmeal.external_id %}"><p class="display-6 mb-0">{{ lmeal.meal_type }}</p></a>
+	  </div>
+	  {% include 'nutrition_tracker/includes/item_buttons.html' with kitchenobject=lmeal editurl=URL_EDIT_MEAL edittext=TEXT_EDIT_MEAL deleteurl=URL_DELETE_MEAL deletetext=TEXT_DELETE_MEAL nexturl=URL_HOME %}
+	</div>
+	{% include 'nutrition_tracker/includes/member_items.html' with lparent=lmeal nexturl=URL_HOME %}
+	{% endfor %}
+ 	{% blocktranslate with tracker_date=tracker_time|naturalday:DISPLAY_DATE_FORMAT asvar prompt %}Add another meal for {{ tracker_date }}.{% endblocktranslate %}
+	{% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt buttonurl=URL_CREATE_MEAL buttontext=TEXT_CREATE_MEAL %}
+	{% else %}
+ 	{% blocktranslate with tracker_date=tracker_time|naturalday:DISPLAY_DATE_FORMAT asvar prompt %}No meals added for {{ tracker_date }}.{% endblocktranslate %}
+	{% translate "Add your first meal for the day!" as subprompt %}
+	{% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_CREATE_MEAL buttontext=TEXT_CREATE_MEAL %}
+	{% endif %}
+
+	<div class="row mx-auto mt-4">
+	  <div class="display-6">{% blocktranslate %}Suggested Foods{% endblocktranslate %}</div>
+	  <div class="suggested-foods-spinner spinner-border text-primary ml-3" role="status"></div>
+	</div>
+	<div class="row justify-content-between align-items-start mx-auto suggested-foods-parent"></div>
+      </div>
+
+      <div class="col-lg-6 pt-3">
+	{% if nutrient_preferences %}
+	<div class="row justify-content-between align-items-center mx-auto mb-3">
+	  <div class="mr-auto">
+	    <p class="display-6 mb-0">{% translate "Tracker" %}</p>
+	  </div>
+	  <a class="btn btn-sm btn-primary" role="button" href="{% url URL_NUTRITION %}">{{ TEXT_EDIT_NUTRITION }}</a>
+	</div>
+	{% include 'nutrition_tracker/includes/nutrition_tracker.html' with type=MEALS_NUTRIENTS %}
+	{% else %}
+ 	{% translate "No nutrition goals found." as prompt %}
+	{% translate "Set goals to track your health." as subprompt %}
+	{% include 'nutrition_tracker/includes/create_prompt.html' with prompt=prompt subprompt=subprompt buttonurl=URL_NUTRITION buttontext=TEXT_CREATE_NUTRITION %}
+	{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{% static 'nutrition_tracker/js/index.js' %}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    const trackerDate = new Date('{{ tracker_time.isoformat }}');
+    $('#tracker_date').datepicker('setDate', trackerDate);
+  });
+
+  {% if user.is_authenticated %}
+  $(document).ready(function() {
+    getSuggestedFoodsHTML();
+  });
+  {% endif %}
+</script>
+{% endblock %}

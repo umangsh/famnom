@@ -1,0 +1,14 @@
+{% load i18n %}
+{% load utils %}
+
+<li class="list-group-item d-flex justify-content-between align-items-center min-item-height">
+  <div class="ml-2 mr-auto w-75">
+    <a class="text-reset" href="{% url URL_DETAIL_FOOD search_result.external_id %}">
+      <div class="font-weight-normal">{{ search_result.name }}</div>
+      {% if search_result.display_brand_details %}
+      <small class="text-muted">{{ search_result.display_brand_details }}</small>
+      {% endif %}
+    </a>
+  </div>
+  <a class="btn btn-sm btn-outline-secondary mr-2 food-btn" role="button" href="{% url URL_LOG_FOOD search_result.external_id %}" data-toggle="tooltip" title="{{ TEXT_LOG_FOOD }}"><i class="bi bi-box-arrow-in-right"></i></a>
+</li>

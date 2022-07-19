@@ -1,0 +1,33 @@
+{% load crispy_forms_tags %}
+{% load i18n %}
+{% load static %}
+
+<style>
+  .dynamic-form .row .custom-checkbox {
+      min-height: 0 !important;
+  }
+  .dynamic-form .form-group {
+      margin-bottom: 0;
+  }
+</style>
+
+{% crispy formset formset_helper %}
+
+<script src="{% static 'nutrition_tracker/js/jquery.formset.js' %}"></script>
+<script type="text/javascript">
+  /* eslint max-len: ["error", { "ignoreStrings": true }]*/
+  $('.formset_row-{{ formset.prefix }}').formset({
+    addText: '{% translate "Add more" %}',
+    deleteText: '{% translate "Delete" %}',
+    prefix: '{{ formset.prefix }}',
+    formCssClass: 'dynamic-form',
+    deleteCssClass: 'delete-row btn btn-sm btn-outline-danger float-right mb-1 mr-3 {{ delete_class }}',
+    addCssClass: 'add-row btn btn-sm btn-outline-primary float-left {{ add_class }}',
+    added: function() {
+      {{add_js|safe}};  // eslint-disable-line
+    },
+    removed: function() {
+      {{remove_js|safe}};  // eslint-disable-line
+    },
+  });
+</script>

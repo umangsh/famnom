@@ -1,0 +1,7 @@
+{% extends "rest_framework/base.html" %}
+
+{% block style %}
+{{ block.super }}
+{% load static %}
+<link rel="shortcut icon" href="{% static 'nutrition_tracker/img/favicon.ico' %}" />
+{% endblock %}

@@ -1,0 +1,13 @@
+# Django templates with template tags in js
+# eslint can't handle them and ignore doesn't work
+templates/base.html
+templates/nutrition_tracker/includes/items_module.html
+templates/nutrition_tracker/includes/nutrition_label.html
+templates/nutrition_tracker/includes/nutrition_tracker.html
+templates/nutrition_tracker/index.html
+templates/nutrition_tracker/my_nutrition.html
+templates/nutrition_tracker/my_tracker_ajax.html
+templates/nutrition_tracker/nutrient.html
+
+# Skip eslint check on external libraries
+nutrition_tracker/static/nutrition_tracker/js/jquery.formset.js

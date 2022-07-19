@@ -1,0 +1,26 @@
+{% load utils %}
+
+{% get_nutrient_amount nutrient_id label_type as nutrient_amount %}
+{% normalize_portion_size nutrient_amount as normalized_amount %}
+{% get_rdi_amount nutrient_id as dv_amount %}
+
+<div class="row justify-content-between font-size-smaller nutrient nutrient-{{ nutrient_id }} {% if normalized_amount is None and not ismodify %}d-none{% endif %}" data-nutrient="{{ nutrient_id }}">
+  <div class="col-9 text-left pl-2">
+    <span class="nutrient-name">{{ nutrient_id|display_nutrient_name }}</span>
+    {% spaceless %}
+    <span class="nutrient-quantity">{% if normalized_amount is not None %}{{ normalized_amount|floatformat:FLOATFORMAT_PRECISION }}{% endif %}</span><span class="nutrient-unit {% if normalized_amount is None %}d-none{% endif %}">{{ nutrient_id|display_nutrient_unit }}</span>
+    {% endspaceless %}
+  </div>
+
+  <div class="col-3 text-right pr-1">
+    {% spaceless %}
+    <span class="font-weight-bold nutrient-dv">{% if normalized_amount is not None and dv_amount is not None %}{% widthratio normalized_amount dv_amount 100 %}{% endif %}</span><span class="font-weight-bold nutrient-dv-percent {% if normalized_amount is None or dv_amount is None %}d-none{% endif %}">&percnt;</span>
+    {% endspaceless %}
+  </div>
+</div>
+
+<div class="row justify-content-center {% if normalized_amount is None and not ismodify %}d-none{% endif %}">
+  <div class="col-12 px-1">
+    <div class="border-bottom border-dark"></div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block head_title %}{% translate "Something went wrong" %}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8 text-center">
+    <h1 class="display-4">{% translate "Something went wrong" %}</h1>
+    <p class="lead">{% translate "Sorry, but the page you were trying to view is not available." %}</p>
+  </div>
+</div>
+{% endblock %}
